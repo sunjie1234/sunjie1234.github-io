@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lmpcl.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="面向对象与面向过程的区别（举例说明）面向过程：吃饭的时候，必须严格按照步骤，第一步生火，第二步洗菜，第三步放油，第四步放菜，第五步炒菜，第六步端菜 面向对象：只需要点外卖打个电话，不需要知晓菜是谁买的，饭是谁做的，外卖是是谁送的，只要拿到饭了就可以 对象对象是一个抽象的概念，表示任意存在的事物。通常将对象划分为两个部分，静态部分称为属性，动态部分称为行为。 类类是多个类似事物组成的群体的统称，是封">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python面向对象基础">
+<meta property="og:url" content="http://lmpcl.cn/2022/03/29/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="京宅">
+<meta property="og:description" content="面向对象与面向过程的区别（举例说明）面向过程：吃饭的时候，必须严格按照步骤，第一步生火，第二步洗菜，第三步放油，第四步放菜，第五步炒菜，第六步端菜 面向对象：只需要点外卖打个电话，不需要知晓菜是谁买的，饭是谁做的，外卖是是谁送的，只要拿到饭了就可以 对象对象是一个抽象的概念，表示任意存在的事物。通常将对象划分为两个部分，静态部分称为属性，动态部分称为行为。 类类是多个类似事物组成的群体的统称，是封">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://lmpcl.cn/2022/03/29/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/01.png">
+<meta property="article:published_time" content="2022-03-29T03:52:17.000Z">
+<meta property="article:modified_time" content="2022-03-29T05:21:50.968Z">
+<meta property="article:author" content="京都小白">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://lmpcl.cn/2022/03/29/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/01.png">
+
+<link rel="canonical" href="http://lmpcl.cn/2022/03/29/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>python面向对象基础 | 京宅</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">京宅</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lmpcl.cn/2022/03/29/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="京都小白">
+      <meta itemprop="description" content="每一个不曾起舞的日子，都是对生命的辜负">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="京宅">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python面向对象基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-29 11:52:17 / 修改时间：13:21:50" itemprop="dateCreated datePublished" datetime="2022-03-29T11:52:17+08:00">2022-03-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" itemprop="url" rel="index"><span itemprop="name">面向对象</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="面向对象与面向过程的区别（举例说明）"><a href="#面向对象与面向过程的区别（举例说明）" class="headerlink" title="面向对象与面向过程的区别（举例说明）"></a>面向对象与面向过程的区别（举例说明）</h4><p>面向过程：吃饭的时候，必须严格按照步骤，第一步生火，第二步洗菜，第三步放油，第四步放菜，第五步炒菜，第六步端菜</p>
+<p>面向对象：只需要点外卖打个电话，不需要知晓菜是谁买的，饭是谁做的，外卖是是谁送的，只要拿到饭了就可以</p>
+<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><p>对象是一个抽象的概念，表示任意存在的事物。通常将对象划分为两个部分，静态部分称为属性，动态部分称为行为。</p>
+<h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><p>类是多个类似事物组成的群体的统称，是封装对象的属性和行为的载体，反过来说，具有相同属性和行为的一类实体被称为类。</p>
+<p>&#x3D;&#x3D;类是对象的抽象，对象是类的实体（实例）。&#x3D;&#x3D;</p>
+<h4 id="面向对象程序设计的三大特点"><a href="#面向对象程序设计的三大特点" class="headerlink" title="面向对象程序设计的三大特点"></a>面向对象程序设计的三大特点</h4><h6 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h6><p>将对象的属性和行为封装起来，而将这些封装起来的载体就是类。</p>
+<ul>
+<li>将属性和行为包装到类对象中。在方法内部对属性进行操作，在类对象的外部调用方法。这样无须关心方法内部的具体实现细节，隔离了复杂度。</li>
+<li>如果该属性不希望被类对象外部所访问，可在前面加两个_(类似于C++私有变量)，但如果想访问可使用以下语法</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_类名__属性</span><br></pre></td></tr></table></figure>
+
+<h6 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h6><p>子类通过继承复用了父类的属性和行为的同时，又增加了子类特有的属性和行为，提高了代码的复用性。</p>
+<ul>
+<li>如果一个类没有继承任何类，则默认继承object</li>
+<li>定义子类时，必须在其构造函数中调用父类的构造函数</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class A（object):</span><br><span class="line">    pass</span><br><span class="line">class B(A):</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
+
+<h6 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h6><p>一个父类衍生出不同的子类，子类继承父类特征的同时，也具备了自己的特征，并且能够实现不同的效果，这就是多态化的结构，提高了代码的可扩展性和可维护性。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">eat</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;动物会吃&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>(<span class="title class_ inherited__">Animal</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">eat</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;狗吃骨头&#x27;</span>)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span>(<span class="title class_ inherited__">Animal</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">eat</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;猫吃鱼&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fun</span>(<span class="params">obj</span>):</span><br><span class="line">    obj.eat()</span><br><span class="line"></span><br><span class="line">fun(Animal())  <span class="comment">#因为Animal是类对象，Animal（）为实例对象</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="类的定义和使用"><a href="#类的定义和使用" class="headerlink" title="类的定义和使用"></a>类的定义和使用</h4><h5 id="定义类"><a href="#定义类" class="headerlink" title="定义类"></a>定义类</h5><p>在python中，类的定义使用class关键字来实现，语法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span>:</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;类的帮助信息&#x27;&#x27;&#x27;</span> <span class="comment">#类的帮助信息（即注释）</span></span><br><span class="line">    statement         <span class="comment">#类体（由类变量、方法和属性等定义语句组成）</span></span><br></pre></td></tr></table></figure>
+
+<p>ClassName：用于指定类名，一般使用大写字母开头，如果类中包含两个单词，第二个单词的首字母也大写。</p>
+<h5 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    grade = <span class="string">&#x27;four&#x27;</span>       <span class="comment">#类属性，直接写在类中的变量叫类属性</span></span><br><span class="line">    <span class="comment">#初始化方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,age</span>):  <span class="comment">#name与age是实例属性</span></span><br><span class="line">        self.name = name  <span class="comment">#self.name是实例属性，这里进行了赋值操作，属性名与变量名可以不相同</span></span><br><span class="line">        self.age = age</span><br><span class="line">    <span class="comment">#实例方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">info</span>(<span class="params">self</span>):</span><br><span class="line">         <span class="built_in">print</span>(<span class="string">&#x27;我的名字是&#x27;</span>+self.name+<span class="string">&#x27; 年龄是&#x27;</span>+self.age)</span><br><span class="line">    <span class="comment">#类方法</span></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">cm</span>(<span class="params">cls</span>):       <span class="comment">#类方法中写cls</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;类方法&#x27;</span>)</span><br><span class="line">    <span class="comment">#静态方法</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sm</span>():          <span class="comment">#在静态方法中不允许写self</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;静态方法&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在类之外定义的称为函数，在类之内定义的称为方法</p>
+<p>实例方法用来修改实例属性，类方法用来修改类属性</p>
+<h6 id="类属性"><a href="#类属性" class="headerlink" title="类属性"></a>类属性</h6><p>类中方法外的属性称为类属性，被该类所有的对象所共享</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#调用语法</span></span><br><span class="line"><span class="built_in">print</span>(Student.grade)</span><br><span class="line"><span class="built_in">print</span>(stu1.grade)</span><br></pre></td></tr></table></figure>
+
+<p>当Student.grade改变时，stu1.grade也改变</p>
+<h6 id="类方法"><a href="#类方法" class="headerlink" title="类方法"></a>类方法</h6><p>使用@classmethod修饰的方法，使用类名直接访问的方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#调用语法</span></span><br><span class="line">Student.cm()</span><br></pre></td></tr></table></figure>
+
+<h6 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h6><p>使用@staticmethod修饰的方法，使用类名直接访问的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#调用语法</span><br><span class="line">Student.sm()</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stu1 = Student(<span class="string">&#x27;张三&#x27;</span>,<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在实例对象stu1中，会有一个类指针指向类对象Student，此时stu1就可以调用类中的方法和属性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stu1.info()<span class="comment">#调用实例方法</span></span><br><span class="line"><span class="built_in">print</span>(stu1.name)<span class="comment">#调用初始化方法</span></span><br><span class="line">Student.info(stu1)<span class="comment">#调用实例方法的另一种形式</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="动态绑定属性和方法"><a href="#动态绑定属性和方法" class="headerlink" title="动态绑定属性和方法"></a>动态绑定属性和方法</h4><p>比如上面的stu1张三同学想要再添加一个性别属性，直接在类外进行赋值即可动态绑定</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stu1.gender = &#x27;女&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>如果想要添加动态方法，则在类外定义一个函数，并将此函数赋给对象的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def show():</span><br><span class="line">    print(&#x27;动态绑定方法&#x27;)</span><br><span class="line">stu1.show = show</span><br><span class="line">#调用</span><br><span class="line">stu1.show()</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h4><ul>
+<li>如果子类对继承自父类的某个属性或方法不满意，可以在子类中对其（方法体）进行编写</li>
+<li>子类重写后的方法可以中可以通过super().xxx()调用父类中被重写的方法</li>
+<li>重写是多态的一种表现形式</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Person(object):</span><br><span class="line">    def __init__(self, name, age):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">    def info(self):</span><br><span class="line">        print(&#x27;姓名：&#123;0&#125;，年龄：&#123;1&#125;&#x27;.format(self.name, self.age))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 定义子类</span><br><span class="line">class Student(Person):</span><br><span class="line">    def __init__(self, name, age, score):</span><br><span class="line">        super().__init__(name, age)  # 重写</span><br><span class="line">        self.score = score</span><br><span class="line"></span><br><span class="line">    def info(self):</span><br><span class="line">        super().info() #继承</span><br><span class="line">        print(&#x27;成绩&#123;0&#125;&#x27;.format(self.score))#重写</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p = Person(&#x27;sun&#x27;, 2)</span><br><span class="line">p.info()</span><br><span class="line">r = Student(&#x27;jie&#x27;, 3, 45)</span><br><span class="line">r.info()</span><br></pre></td></tr></table></figure>
+
+<h4 id="特殊属性与方法"><a href="#特殊属性与方法" class="headerlink" title="特殊属性与方法"></a>特殊属性与方法</h4><p><img src="/2022/03/29/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/01.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__add__</span>(<span class="params">self, other</span>):</span><br><span class="line">        <span class="keyword">return</span> self.name+other.name</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):<span class="comment">#重写此方法用来查看类中某属性的长度</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.name)</span><br><span class="line"></span><br><span class="line">stu1 = Student(<span class="string">&#x27;张三&#x27;</span>)</span><br><span class="line">stu2 = Student(<span class="string">&#x27;李四&#x27;</span>)</span><br><span class="line">stu3 = Student(<span class="string">&#x27;Jack&#x27;</span>)</span><br><span class="line"></span><br><span class="line">s = stu1+stu2<span class="comment">#因为Student类中的add方法使stu1与stu2具有加的功能</span></span><br><span class="line"><span class="built_in">print</span>(s)</span><br><span class="line">r = stu1.__add__(stu2)<span class="comment">#调用对象方法</span></span><br><span class="line"><span class="built_in">print</span>(r)</span><br><span class="line">m = stu3.__len__()</span><br><span class="line"><span class="built_in">print</span>(m)</span><br></pre></td></tr></table></figure>
+
+<p>__new__方法是创建对象，并要返回一个实例对象，__init__方法则是初始化这个对象</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/" rel="prev" title="MySQL安装配置">
+      <i class="fa fa-chevron-left"></i> MySQL安装配置
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/" rel="next" title="pythonGUI基础">
+      pythonGUI基础 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%8E%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%88%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">面向对象与面向过程的区别（举例说明）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-number">3.</span> <span class="nav-text">类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%B9%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">面向对象程序设计的三大特点</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B0%81%E8%A3%85"><span class="nav-number">4.0.1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">4.0.2.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">4.0.3.</span> <span class="nav-text">多态</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">类的定义和使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="nav-number">5.1.</span> <span class="nav-text">定义类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%B1%BB"><span class="nav-number">5.2.</span> <span class="nav-text">创建类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%B1%BB%E5%B1%9E%E6%80%A7"><span class="nav-number">5.2.1.</span> <span class="nav-text">类属性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%B1%BB%E6%96%B9%E6%B3%95"><span class="nav-number">5.2.2.</span> <span class="nav-text">类方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">5.2.3.</span> <span class="nav-text">静态方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-number">6.</span> <span class="nav-text">创建对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">动态绑定属性和方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99"><span class="nav-number">8.</span> <span class="nav-text">方法重写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E5%B1%9E%E6%80%A7%E4%B8%8E%E6%96%B9%E6%B3%95"><span class="nav-number">9.</span> <span class="nav-text">特殊属性与方法</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="京都小白"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">京都小白</p>
+  <div class="site-description" itemprop="description">每一个不曾起舞的日子，都是对生命的辜负</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+      
+      <div>
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+      src="//music.163.com/outchain/player?type=2&id=421137559&auto=1&height=66"></iframe>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">京都小白</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='1' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

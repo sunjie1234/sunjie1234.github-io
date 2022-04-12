@@ -1,99 +1,213 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lmpcl.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="每一个不曾起舞的日子，都是对生命的辜负">
+<meta property="og:type" content="website">
+<meta property="og:title" content="京宅">
+<meta property="og:url" content="http://lmpcl.cn/index.html">
+<meta property="og:site_name" content="京宅">
+<meta property="og:description" content="每一个不曾起舞的日子，都是对生命的辜负">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="京都小白">
 <meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://lmpcl.cn/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>京宅</title>
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">京宅</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-  
-<meta name="generator" content="Hexo 6.1.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+          <div class="content index posts-expand">
+            
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lmpcl.cn/2022/04/12/hello-world/">
 
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/04/12/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2022-04-12T05:42:49.279Z" itemprop="datePublished">2022-04-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/04/12/hello-world/">Hello World</a>
-    </h1>
-  
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="京都小白">
+      <meta itemprop="description" content="每一个不曾起舞的日子，都是对生命的辜负">
+    </span>
 
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="京宅">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/12/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-12 16:55:13" itemprop="dateCreated datePublished" datetime="2022-04-12T16:55:13+08:00">2022-04-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-23 13:53:38" itemprop="dateModified" datetime="2022-03-23T13:53:38+08:00">2022-03-23</time>
+              </span>
+
+          
+
+        </div>
       </header>
+
     
-    <div class="e-content article-entry" itemprop="articleBody">
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
@@ -109,99 +223,1257 @@
 
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/04/12/hello-world/" data-id="cl1vq6qss0000ssvf93h0eqq5" data-title="Hello World" class="article-share-link">Share</a>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="京都小白">
+      <meta itemprop="description" content="每一个不曾起舞的日子，都是对生命的辜负">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="京宅">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/11/python%E7%88%AC%E8%99%AB/" class="post-title-link" itemprop="url">python爬虫</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-11 21:45:41" itemprop="dateCreated datePublished" datetime="2022-04-11T21:45:41+08:00">2022-04-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-12 01:10:23" itemprop="dateModified" datetime="2022-04-12T01:10:23+08:00">2022-04-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%88%AC%E8%99%AB/" itemprop="url" rel="index"><span itemprop="name">爬虫</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
+          <p>爬虫不一定要用python，也可以用java和C，但是python是所有编程中最好上手的</p>
+<p>robots.txt协议：君子协议，规定了网络中哪些数据可以被爬取数据，哪些不可以</p>
+<p>爬虫：通过编写程序来获取网络上的资源</p>
+<h5 id="第一个爬虫"><a href="#第一个爬虫" class="headerlink" title="第一个爬虫"></a>第一个爬虫</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#页面源代码</span></span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line">url = <span class="string">&quot;https://blog.csdn.net/Jurbo/article/details/52313636&quot;</span></span><br><span class="line">resp = urlopen(url)</span><br><span class="line"><span class="built_in">print</span>(resp.read().decode(<span class="string">&quot;UTF-8&quot;</span>))//输出的字节解码后的</span><br></pre></td></tr></table></figure>
+
+<p>由于各大网站反爬虫的防护做的还是相当可以的，所以这样的基础代码只能算是一个小尝试，并不能拿来应用。</p>
+<h4 id="Web请求过程剖析"><a href="#Web请求过程剖析" class="headerlink" title="Web请求过程剖析"></a>Web请求过程剖析</h4><ul>
+<li><p>服务器渲染</p>
+<p>在服务器那边直接把数据和html整合在一起，统一返回给浏览器，在页面源代码中能看到数据</p>
+</li>
+<li><p>客户端渲染</p>
+<p>第一次请求只要一个html骨架，第二次请求拿到数据，进行数据展示，在页面源代码中看不到数据</p>
+</li>
+</ul>
+<p>####HTTP协议</p>
+
       
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lmpcl.cn/2022/04/09/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="京都小白">
+      <meta itemprop="description" content="每一个不曾起舞的日子，都是对生命的辜负">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="京宅">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/09/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89/" class="post-title-link" itemprop="url">java基础（三）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-09 09:12:05" itemprop="dateCreated datePublished" datetime="2022-04-09T09:12:05+08:00">2022-04-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-12 16:57:46" itemprop="dateModified" datetime="2022-04-12T16:57:46+08:00">2022-04-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h4><ol>
+<li>成员变量直接写在类中</li>
+<li>成员方法不要写static关键字</li>
+<li>如果成员变量没有赋值，默认值与数组一样</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span>&#123;</span><br><span class="line">    <span class="comment">//成员变量</span></span><br><span class="line">    String name;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="comment">//成员方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">eat</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;吃饭&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="对象的创建及使用"><a href="#对象的创建及使用" class="headerlink" title="对象的创建及使用"></a>对象的创建及使用</h4><ul>
+<li><p>导包：指出需要的类在什么位置</p>
+<p>import  包名称  类名称；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>  <span class="keyword">package</span> demo1.Student;</span><br></pre></td></tr></table></figure>
+
+<p>如果类和对象在同一个包里，导包语句可以省略不写</p>
+</li>
+<li><p>创建</p>
+<p>类名称  对象名  &#x3D;  new  类名称（）；</p>
+</li>
+<li><p>使用</p>
+<p>使用成员变量：对象名.成员变量名</p>
+<p>使用成员方法：对象名.成员方法名（参数）</p>
+</li>
+</ul>
+<p>####一个对象的内存图</p>
+<p>  <img src="/2022/04/09/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89/1.png"></p>
+<h4 id="两个对象的内存图"><a href="#两个对象的内存图" class="headerlink" title="两个对象的内存图"></a>两个对象的内存图</h4><p><img src="/2022/04/09/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89/2.png"></p>
+<h4 id="两个引用指向同一个对象的内存图"><a href="#两个引用指向同一个对象的内存图" class="headerlink" title="两个引用指向同一个对象的内存图"></a>两个引用指向同一个对象的内存图</h4><p><img src="/2022/04/09/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89/3.png"></p>
+<h4 id="使用对象类型作为方法的参数"><a href="#使用对象类型作为方法的参数" class="headerlink" title="使用对象类型作为方法的参数"></a>使用对象类型作为方法的参数</h4><p><img src="/2022/04/09/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89/4.png"></p>
+<h4 id="使用对象类型作为方法的返回值"><a href="#使用对象类型作为方法的返回值" class="headerlink" title="使用对象类型作为方法的返回值"></a>使用对象类型作为方法的返回值</h4><p><img src="/2022/04/09/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89/5.png"></p>
+<h4 id="局部变量和成员变量的区别"><a href="#局部变量和成员变量的区别" class="headerlink" title="局部变量和成员变量的区别"></a>局部变量和成员变量的区别</h4><ol>
+<li><p>定义位置不一样：</p>
+<p>局部变量：方法内部</p>
+<p>成员变量：类内部</p>
+</li>
+<li><p>作用范围不一样：<br>局部变量：只有方法中能用<br>成员变量：整个类通用</p>
+</li>
+<li><p>默认值不一样：<br>局部变量：无默认值<br>成员变量：有默认值</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lmpcl.cn/2022/04/08/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="京都小白">
+      <meta itemprop="description" content="每一个不曾起舞的日子，都是对生命的辜负">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="京宅">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/08/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">java基础（二）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-08 21:56:28 / 修改时间：22:06:29" itemprop="dateCreated datePublished" datetime="2022-04-08T21:56:28+08:00">2022-04-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="java内存划分"><a href="#java内存划分" class="headerlink" title="java内存划分"></a>java内存划分</h4><h5 id="栈（stack）"><a href="#栈（stack）" class="headerlink" title="栈（stack）"></a>栈（stack）</h5><p>存放的都是方法中的局部变量</p>
+<p>局部变量：方法的参数，或者是方法{}内部的变量</p>
+<p>作用域：一旦超出作用域，立刻从栈内存当中消失</p>
+<p>&#x3D;&#x3D;方法运行一定要在栈当中&#x3D;&#x3D;</p>
+<h5 id="堆（Heap）"><a href="#堆（Heap）" class="headerlink" title="堆（Heap）"></a>堆（Heap）</h5><p>&#x3D;&#x3D;凡是new出来的东西，都在堆当中&#x3D;&#x3D;</p>
+<p>堆内存里面的东西都有一个地址值：16进制</p>
+<p>堆内存里面的数据都有默认值，规则：</p>
+<ol>
+<li>整数   默认0</li>
+<li>浮点数  默认0.0</li>
+<li>字符  默认‘\u0000’</li>
+<li>布尔  默认false</li>
+<li>引用  默认null</li>
+</ol>
+<h5 id="方法区（Method-Area）"><a href="#方法区（Method-Area）" class="headerlink" title="方法区（Method Area）"></a>方法区（Method Area）</h5><p>存储class相关信息，包含方法的信息。</p>
+<h5 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h5><p>与操作系统有关</p>
+<h5 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h5><p>与CPU有关</p>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><h5 id="定义方法的完整格式："><a href="#定义方法的完整格式：" class="headerlink" title="定义方法的完整格式："></a>定义方法的完整格式：</h5><p>修饰符  返回值类型  方法名称（参数类型  参数名称，…）{</p>
+<p>方法体；</p>
+<p>return  返回值；</p>
+<p>}</p>
+<p>修饰符：现阶段的固定写法，public  static</p>
+<p>返回类型：最终产生的数据类型</p>
+<p>return：一是停止当前方法，二是将返回值还给调用处</p>
+<h5 id="方法的三种调用格式"><a href="#方法的三种调用格式" class="headerlink" title="方法的三种调用格式"></a>方法的三种调用格式</h5><ol>
+<li>单独调用：方法名称(参数)</li>
+<li>打印调用</li>
+<li>赋值调用</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">a</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        <span class="comment">//单独调用</span></span><br><span class="line">        sum(<span class="number">10</span>,<span class="number">20</span>);</span><br><span class="line">        <span class="comment">//打印调用</span></span><br><span class="line">        System.out.println(sum(<span class="number">10</span>,<span class="number">20</span>));</span><br><span class="line">        <span class="comment">//赋值调用</span></span><br><span class="line">        <span class="type">int</span> num=sum(<span class="number">10</span>,<span class="number">20</span>);</span><br><span class="line">        System.out.println(num);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> a+b;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h5><ol>
+<li>方法应该定义在类中，不能在方法中定义方法</li>
+<li>方法定义的前后顺序无所谓</li>
+<li>方法定义之后不会执行，如果希望执行一定要调用</li>
+<li>如果方法有返回值，必须写上“return返回值”</li>
+<li>return后面的返回值数据，必须和方法的返回值类型对应起来</li>
+<li>对于一个void没有返回值的方法，只写return</li>
+<li>return可以省略不写</li>
+<li>一个方法中可以有多个return语句，但是要保证同时只有一个会被执行</li>
+</ol>
+<h5 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h5><p>对于功能类似的方法来说，因为参数列表不一样，却需要记住不同的方法名称</p>
+<p>重载：方法名称相同，但是参数列表不一样</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">demo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(sum(<span class="number">10</span>,<span class="number">20</span>));</span><br><span class="line">        System.out.println(sum(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>));</span><br><span class="line">        System.out.println(sum(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span></span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b,<span class="type">int</span> c)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> a+b+c;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b,<span class="type">int</span> c,<span class="type">int</span> d)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> a+b+c+d;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方法重载与下列因素有关：</p>
+<ol>
+<li>参数个数不同</li>
+<li>参数类型不同</li>
+<li>参数的多类型顺序不同</li>
+</ol>
+<p>方法重载与下列因素无关：</p>
+<ol>
+<li>与参数的名称无关</li>
+<li>与方法的返回值类型无关</li>
+</ol>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>数组：一个容器，可以同时存放多个数据</p>
+<p>数组的特点：</p>
+<ol>
+<li>数组是一种引用数据类型</li>
+<li>数组当中的多个数据，类型必须统一</li>
+<li>数组的长度再程序运行期间不可改变</li>
+</ol>
+<h5 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h5><p>数组的初始化：在内存中创建一个数据，并且向其中赋予一些默认值</p>
+<p>两种常见的初始化方式：</p>
+<ol>
+<li><p>动态初始化（指定长度）</p>
+<p>数据类型【】 数组名称 &#x3D; new 数组类型【数组长度】</p>
+<ul>
+<li>左侧数据类型，也就是数组当中保存的数据，全都是统一的类型</li>
+<li>左侧的中括号，代表我是一个数组</li>
+<li>左侧数组名称，给数组取一个名字</li>
+<li>右侧的new，代表创建数组的动作</li>
+<li>右侧数据类型，必须和左边的数据类型保持一致</li>
+<li>右侧中括号的长度，也就是数组当中，到底可以保存多少个数据，是一个int数字</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] array=<span class="keyword">new</span> <span class="title class_">int</span> [<span class="number">300</span>];</span><br><span class="line"><span class="type">double</span>[] array2 =<span class="keyword">new</span> <span class="title class_">double</span>[<span class="number">10</span>];</span><br><span class="line">String[] array3 = <span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>静态初始化（指定内容）</p>
+<ul>
+<li>标准格式：数据类型【】 数组名称 &#x3D; new 数组类型【】{元素1，元素2，……}；</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] array1=<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">5</span>,<span class="number">15</span>,<span class="number">25</span>&#125;;</span><br><span class="line">String[] array2=<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;hello&quot;</span>,<span class="string">&quot;world&quot;</span>,<span class="string">&quot;Java&quot;</span> &#125;; </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>省略格式：数据类型【】 数组名称&#x3D;{元素1，元素2，……}；</li>
+</ul>
+</li>
+</ol>
+<h5 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h5><ol>
+<li>静态初始化没有直接指定长度，但是仍然会自动推算得到长度</li>
+<li>静态初始化标准格式可以拆分为两个步骤</li>
+<li>动态初始化也可以拆分为两个步骤</li>
+<li>静态初始化一旦使用省略格式，就不能拆分成为两个步骤了</li>
+</ol>
+<h5 id="使用建议"><a href="#使用建议" class="headerlink" title="使用建议"></a>使用建议</h5><p>如果不确定数组当中的具体内容，用动态初始化，否则用静态初始化。</p>
+<h5 id="访问数组元素进行获取"><a href="#访问数组元素进行获取" class="headerlink" title="访问数组元素进行获取"></a>访问数组元素进行获取</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo1;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">demo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span></span><br><span class="line">    &#123;</span><br><span class="line">       <span class="type">int</span>[] array = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>&#125;;</span><br><span class="line">        System.out.println(array);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/08/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/1.png"></p>
+<p>直接打印数组获得的是该数组的内存地址哈希值</p>
+<p>I代表是int类型</p>
+<p>访问数组元素的格式：数组名称（索引值）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(array[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
+
+<h5 id="访问数组元素进行赋值"><a href="#访问数组元素进行赋值" class="headerlink" title="访问数组元素进行赋值"></a>访问数组元素进行赋值</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">demo1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span></span><br><span class="line">    &#123;</span><br><span class="line">       <span class="type">int</span>[] array=<span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">3</span>];</span><br><span class="line">        System.out.println(array);</span><br><span class="line">        System.out.println(array[<span class="number">0</span>]);</span><br><span class="line">        System.out.println(array[<span class="number">1</span>]);</span><br><span class="line">        System.out.println(array[<span class="number">2</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/08/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/2.png"></p>
+<p>使用动态初始化数组的时候，其余的元素将会自动拥有一个默认值，规则如下：</p>
+<ol>
+<li>如果是整数类型，那么默认为0；</li>
+<li>如果是浮点数类型，那么默认为0.0；</li>
+<li>如果是字符类型，那么默认为‘\u0000’；</li>
+<li>如果是布尔类型，那么默认为false；</li>
+<li>如果是引用类型，那么默认为null；</li>
+</ol>
+<h5 id="一个数组的内存图"><a href="#一个数组的内存图" class="headerlink" title="一个数组的内存图"></a>一个数组的内存图</h5><p><img src="/2022/04/08/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/3.png"></p>
+<h5 id="两个数组的内存图"><a href="#两个数组的内存图" class="headerlink" title="两个数组的内存图"></a>两个数组的内存图</h5><p>两个数组不同地址</p>
+<p><img src="/2022/04/08/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/4.png" alt="1649421809721"></p>
+<h5 id="两个引用指向同一数组"><a href="#两个引用指向同一数组" class="headerlink" title="两个引用指向同一数组"></a>两个引用指向同一数组</h5><p>两个数组同一个地址</p>
+<p><img src="/2022/04/08/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89/5.png"></p>
+<h5 id="获取数组的长度"><a href="#获取数组的长度" class="headerlink" title="获取数组的长度"></a>获取数组的长度</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] array=<span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">3</span>];</span><br><span class="line">       System.out.println(array.length);</span><br></pre></td></tr></table></figure>
+
+<h5 id="数组作为方法的参数"><a href="#数组作为方法的参数" class="headerlink" title="数组作为方法的参数"></a>数组作为方法的参数</h5><p>当调用方法的时候，向方法的小括号进行传参，传递进去的其实是数组的地址值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">printArray</span><span class="params">(<span class="type">int</span>[] array)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;array.length;i++)</span><br><span class="line">        System.out.println(array[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>数组作为方法的返回值</p>
+<p>数组返回的也是数组的地址值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[] a(<span class="type">int</span> a,<span class="type">int</span> b)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> a+b;</span><br><span class="line">    <span class="type">int</span> <span class="variable">avg</span> <span class="operator">=</span> sum/<span class="number">2</span>;</span><br><span class="line">    <span class="type">int</span>[] array=&#123;sum,avg&#125;;</span><br><span class="line">    <span class="keyword">return</span> array;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lmpcl.cn/2022/04/08/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="京都小白">
+      <meta itemprop="description" content="每一个不曾起舞的日子，都是对生命的辜负">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="京宅">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/08/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-title-link" itemprop="url">java基础（一）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-08 21:53:37 / 修改时间：22:06:21" itemprop="dateCreated datePublished" datetime="2022-04-08T21:53:37+08:00">2022-04-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>字符串常量：凡是用双引号引起来的部分，叫做字符串常量。</p>
+<p>整数常量：直接写上的数字，没有小数点。</p>
+<p>浮点数常量：直接写上的数字，有小数点。</p>
+<p>字符变常量：用单引号引起来的单个字符</p>
+<p>布尔常量：true，false</p>
+<p>空常量：null</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">First_Java</span> &#123;</span><br><span class="line">    <span class="comment">//第一行第三个单词必须要跟所在文件名字一样</span></span><br><span class="line">    <span class="comment">//public class 后面代表定义一个类的名称，类是java所有源代码中的一个基本组成单位</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;<span class="comment">//固定方法，代表main方法</span></span><br><span class="line">        <span class="comment">//字符串常量</span></span><br><span class="line">        System.out.println(<span class="string">&quot;HelloWorld&quot;</span>);<span class="comment">//双引号内可以为空</span></span><br><span class="line">        <span class="comment">//整数常量</span></span><br><span class="line">        System.out.println(<span class="number">30</span>);</span><br><span class="line">        <span class="comment">//浮点数常量：</span></span><br><span class="line">        System.out.println(<span class="number">1.4</span>);</span><br><span class="line">        <span class="comment">//字符常量</span></span><br><span class="line">        System.out.println(<span class="string">&#x27;a&#x27;</span>);<span class="comment">//单引号内不能为空，有且只有一个字符</span></span><br><span class="line">        <span class="comment">//布尔常量</span></span><br><span class="line">        System.out.println(<span class="literal">true</span>);</span><br><span class="line">        <span class="comment">//空常量不能直接进行打印</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><h5 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h5><ul>
+<li>整数型       byte   short   int（默认）  long      1  2  4  8（字节）</li>
+<li>浮点数型     float  double（默认）                   4  8</li>
+<li>字符型         char                                                 2</li>
+<li>布尔型         boolean                                           1</li>
+</ul>
+<h5 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h5><ul>
+<li>字符串</li>
+<li>数组</li>
+<li>类</li>
+<li>接口</li>
+<li>Lanbda</li>
+</ul>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p>程序运行期间，内容可以发生改变的量</p>
+<p>创建变量格式：数据类型  变量名称  &#x3D;  数据值；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">First_Java</span> &#123;</span><br><span class="line">    <span class="comment">//第一行第三个单词必须要跟所在文件名字一样</span></span><br><span class="line">    <span class="comment">//public class 后面代表定义一个类的名称，类是java所有源代码中的一个基本组成单位</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;<span class="comment">//固定方法，代表main方法</span></span><br><span class="line">       <span class="type">int</span> num1;</span><br><span class="line">       num1=<span class="number">2</span>;</span><br><span class="line">       System.out.println(num1);</span><br><span class="line">       num1=<span class="number">10</span>;</span><br><span class="line">        System.out.println(num1);</span><br><span class="line">        <span class="type">int</span> num2=<span class="number">3</span>;</span><br><span class="line">        System.out.println(num2);</span><br><span class="line">        <span class="type">float</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">3.14F</span>;</span><br><span class="line">        System.out.println(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意事项：</p>
+<ol>
+<li>如果创建多个变量，那么变量之间的名称不可以重复（不能重复定义变量）</li>
+<li>对于float和long类型变量，字母后缀F和L不要丢掉</li>
+<li>如果使用byte或者short类型的变量，那么右侧的数据值不能超过左侧类型的范围</li>
+<li>没有进行赋值的变量不能直接使用</li>
+<li>变量使用不能超过作用于的范围</li>
+</ol>
+<h4 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h4><ul>
+<li><p>自动类型转换（隐式）</p>
+<ol>
+<li><p>int——&gt;long</p>
+</li>
+<li><p>byte——&gt;int</p>
+</li>
+<li><p>float——&gt;double</p>
+</li>
+<li><p>long——&gt;float</p>
+<p>虽然long8字节，float4字节，但由于long与float存储方式不同，所以long类型的数值范围小于float。</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">First_Java</span> &#123;</span><br><span class="line">    <span class="comment">//第一行第三个单词必须要跟所在文件名字一样</span></span><br><span class="line">    <span class="comment">//public class 后面代表定义一个类的名称，类是java所有源代码中的一个基本组成单位</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;<span class="comment">//固定方法，代表main方法</span></span><br><span class="line">        <span class="comment">//最左边是long类型，右边是int</span></span><br><span class="line">        <span class="comment">//一个符号代表赋值</span></span><br><span class="line">        <span class="comment">//int ——&gt;long，符合数据从小到大的要求</span></span><br><span class="line">        <span class="comment">//这一行代码发生了自动类型转换</span></span><br><span class="line">       <span class="type">long</span> <span class="variable">num1</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">       System.out.println(num1);</span><br><span class="line">        <span class="comment">//最左边是double类型，右边是float</span></span><br><span class="line">        <span class="comment">//一个符号代表赋值</span></span><br><span class="line">        <span class="comment">//float ——&gt;double，符合数据从小到大的要求</span></span><br><span class="line">        <span class="comment">//这一行代码发生了自动类型转换</span></span><br><span class="line">       <span class="type">double</span> num2=<span class="number">2.5F</span>;</span><br><span class="line">        System.out.println(num2);</span><br><span class="line">        <span class="comment">//最左边是float类型，右边是long</span></span><br><span class="line">        <span class="comment">//一个符号代表赋值</span></span><br><span class="line">        <span class="comment">//long ——&gt;float，符合数据从小到大的要求</span></span><br><span class="line">        <span class="comment">//这一行代码发生了自动类型转换</span></span><br><span class="line">        <span class="type">float</span> num3=<span class="number">30L</span>;</span><br><span class="line">        System.out.println(num3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>强制类型转换</p>
+<ol>
+<li>特点：代码要进行特殊的格式处理，不能自动完成</li>
+<li>格式：范围小的类型 范围小的变量名&#x3D;（范围小的类型）原本范围大的数据</li>
+</ol>
+<p>注意事项：</p>
+<ol>
+<li>强制类型转换一般不推荐使用，因为可能发生精度损失、数据溢出。</li>
+<li>byte&#x2F;short&#x2F;char这三种类型都可以进行数学运算，例如加法“+”</li>
+<li>byte&#x2F;short&#x2F;char这三种类型进行数学运算时，首先被提升为int类型，然后再计算。</li>
+<li>右侧数据大小不能超过左侧的类型数据范围</li>
+</ol>
+</li>
+</ul>
+<h4 id="ASCII编码表"><a href="#ASCII编码表" class="headerlink" title="ASCII编码表"></a>ASCII编码表</h4><p>  <img src="/2022/04/08/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/1.png"></p>
+<h4 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h4><table>
+<thead>
+<tr>
+<th>+</th>
+<th>加法运算，字符串连接运算</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-</td>
+<td>减法运算</td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘法运算</td>
+</tr>
+<tr>
+<td>&#x2F;</td>
+<td>除法运算</td>
+</tr>
+<tr>
+<td>%</td>
+<td>取模运算，两个数字相除取余数</td>
+</tr>
+<tr>
+<td>++、–</td>
+<td>自增自减运算</td>
+</tr>
+</tbody></table>
+<p>“+”：</p>
+<ol>
+<li>对于数值来说，那就是加法</li>
+<li>对于char类型来说，在计算之前，char会被提升为int</li>
+<li>对于String来说，加号代表字符串连接操作</li>
+</ol>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>方法命名：小驼峰<br>注意事项：</p>
+<ol>
+<li>方法定义的先后顺序无所谓</li>
+<li>方法的定义不能产生嵌套包含关系</li>
+<li>方法定义好了之后，不会执行，要调用方法才能执行<br>定义方法：public static void 方法名(){具体内容}<br>调用方法：方法名称();</li>
+</ol>
+<h4 id="流程概述"><a href="#流程概述" class="headerlink" title="流程概述"></a>流程概述</h4><ul>
+<li><p>顺序结构</p>
+</li>
+<li><p>选择结构</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(关系表达式)&#123;</span><br><span class="line">    语句体<span class="number">1</span>；</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(关系表达式)&#123;</span><br><span class="line">   语句体<span class="number">2</span>；</span><br><span class="line">&#125;</span><br><span class="line">……</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(关系表达式)&#123;</span><br><span class="line">   语句体<span class="number">2</span>；</span><br><span class="line"> &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">       语句体</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>switch后面只能是以下数据类型：</p>
+<p>基本数据类型：byte&#x2F;short&#x2F;char&#x2F;int</p>
+<p>引用数据类型：String字符串 、enum枚举</p>
+</li>
+<li><p>选择结构</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lmpcl.cn/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="京都小白">
+      <meta itemprop="description" content="每一个不曾起舞的日子，都是对生命的辜负">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="京宅">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">pythonGUI基础</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-29 14:26:02" itemprop="dateCreated datePublished" datetime="2022-03-29T14:26:02+08:00">2022-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-30 11:28:01" itemprop="dateModified" datetime="2022-03-30T11:28:01+08:00">2022-03-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/GUI%E7%95%8C%E9%9D%A2%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">GUI界面编程</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="GUI简介"><a href="#GUI简介" class="headerlink" title="GUI简介"></a>GUI简介</h4><p>GUI是Graphical User Interface（图形用户界面）的缩写。在GUI中，并不只是输入文本和返回文本，用户可以看到窗口、按钮、文本框等图形，而且可以用鼠标单击，还可以通过键盘输入。GUI是与程序交互不同的一种方式。GUI有三个基本要素：输入、处理和输出。</p>
+<table>
+<thead>
+<tr>
+<th align="center">工具包</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">wxPython</td>
+<td align="center">python语言的一套GUI图形库，可以方便地创建完整的GUI用户界面</td>
+</tr>
+<tr>
+<td align="center">Kivy</td>
+<td align="center">开源工具包，能让相同源代码创建的程序跨平台运行</td>
+</tr>
+<tr>
+<td align="center">Flexx</td>
+<td align="center">纯python工具包，用来创建图形化界面应用程序。使用Web技术进行界面的渲染</td>
+</tr>
+<tr>
+<td align="center">PyQt</td>
+<td align="center">是Qt库的python版本，支持跨平台</td>
+</tr>
+<tr>
+<td align="center">Tkinter</td>
+<td align="center">是TK图形用户界面工具包标准的python接口。TK是一个轻量级的跨平台图形GUI开发工具</td>
+</tr>
+<tr>
+<td align="center">Pywin32</td>
+<td align="center">允许用户像VC一样使用python开发win32应用</td>
+</tr>
+<tr>
+<td align="center">PyGTK</td>
+<td align="center">让用户轻松创建具有图形用户界面的程序</td>
+</tr>
+<tr>
+<td align="center">pyui4win</td>
+<td align="center">开源的采用自绘技术的界面库</td>
+</tr>
+</tbody></table>
+<h4 id="使用wx-Frame框架"><a href="#使用wx-Frame框架" class="headerlink" title="使用wx.Frame框架"></a>使用wx.Frame框架</h4><p>在GUI中，框架通常也成为窗口。在wxPython中，wx.Frame是所有框架的父类。当用户创建wx.Frame的子类时，子类应该调用父类的构造器wx.Frame.____<strong>init</strong>()。wx.Frame的构造器语法格式如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wx.Frame(parent,<span class="built_in">id</span>=-<span class="number">1</span>,title=<span class="string">&quot;&quot;</span>,pos=wx.DefaultPosition,size=wx.DefaultSize,style=wx.DEFAULT_FRAME          _STYLE,name=<span class="string">&quot;frame&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>parent：框架的父窗口，如果是顶级窗口，这个值是None</p>
+<p>id：关于新窗口的wxPythonID号。通常设为-1，让wyPython自动给生成一个新的id</p>
+<p>title：窗口的标题</p>
+<p>pos：一个wx.Point对象，它指定这个新窗口的左上角在屏幕中的位置。在图形用户界面程序中，通常（0，0）是显示器的左上角。这个默认的（-1，-1）将让系统决定窗口的位置。</p>
+<p>size：一个wx.Size对象，它指定这个窗口的初始尺寸。默认的（-1，-1）将让系统决定窗口的初始尺寸。</p>
+<p>style：指定窗口的类型的常量。可以使用或运算来组合它们。</p>
+<p>name：框架的内在的名字，可以用它来寻找这个窗口。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyFrame</span>(wx.Frame):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, parent, <span class="built_in">id</span></span>):</span><br><span class="line">        wx.Frame.__init__(self,parent,<span class="built_in">id</span>,title = <span class="string">&quot;创建Frame&quot;</span>,pos = (<span class="number">100</span>,<span class="number">100</span>), size= (<span class="number">300</span>,<span class="number">300</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app = wx.App()</span><br><span class="line">    frame = MyFrame(parent=<span class="literal">None</span>, <span class="built_in">id</span>=-<span class="number">1</span>)</span><br><span class="line">    frame.Show()</span><br><span class="line">    app.MainLoop()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/1.png"></p>
+<h4 id="StaticText文本类"><a href="#StaticText文本类" class="headerlink" title="StaticText文本类"></a>StaticText文本类</h4><p>对于所有的UI工具来说，最基本的任务就是在屏幕上绘制纯文本。在wxPython中，可以使用wx.StaticText类来完成。使用wx.StaticText能够改变文本的对齐方式、字体和颜色等。构造函数语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wx.StaticText(parent,id,label,pos=wx.DefaultPosition,size=wx.DefaultSize,style=0,name=&quot;staticTex               t&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>parent：父窗口插件</p>
+<p>id：使用-1可以自动创建一个唯一的标识</p>
+<p>label：显示在静态控件中的文本内容</p>
+<p>pos：一个wx.Point或者一个Python元组，它是窗口部件的位置</p>
+<p>size：一个wxSize或者一个Python元组，它是窗口部件的尺寸</p>
+<p>style：样式标记</p>
+<p>name：对象的名字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyFrame</span>(wx.Frame):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,parent,<span class="built_in">id</span></span>):</span><br><span class="line">        wx.Frame.__init__(self,parent,<span class="built_in">id</span>,title=<span class="string">&quot;创建StaticText类&quot;</span>,pos=(<span class="number">100</span>,<span class="number">100</span>),size=(<span class="number">600</span>,<span class="number">400</span>))</span><br><span class="line">        panel = wx.Panel(self)<span class="comment">#创建画板</span></span><br><span class="line">        <span class="comment">#创建标题，并设置字体</span></span><br><span class="line">        title = wx.StaticText(panel,label=<span class="string">&quot;python&quot;</span>,pos=(<span class="number">100</span>,<span class="number">20</span>))</span><br><span class="line">        font = wx.Font(<span class="number">16</span>,wx.DEFAULT,wx.FONTSTYLE_NORMAL,wx.NORMAL)</span><br><span class="line">        title.SetFont(font)</span><br><span class="line">        <span class="comment">#创建文本</span></span><br><span class="line">        wx.StaticText(panel,label=<span class="string">&#x27;人生苦短，我用python&#x27;</span>,pos=(<span class="number">50</span>,<span class="number">50</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app = wx.App()<span class="comment">#初始化应用</span></span><br><span class="line">    frame = MyFrame(parent=<span class="literal">None</span>, <span class="built_in">id</span>=-<span class="number">1</span>)<span class="comment">#实例化MyFrame类，并传递参数</span></span><br><span class="line">    frame.Show()<span class="comment">#显示窗口</span></span><br><span class="line">    app.MainLoop()<span class="comment">#调用主循环方法</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/2.png"></p>
+<h4 id="TextCtrl输入文本类"><a href="#TextCtrl输入文本类" class="headerlink" title="TextCtrl输入文本类"></a>TextCtrl输入文本类</h4><p>wx.wx.StaticText只能用于显示纯粹的静态文本，但是有时需要输入文本与用户进行交互，此时需要TextCtrl文本类，它允许输入单行和多行文本，也可以作为密码输入控件，掩饰所按下的按键。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wx.TextCtrl(parent,<span class="built_in">id</span>,value=<span class="string">&quot;&quot;</span>,pos=wx.DefaultPosition,size=wx.DefaultSize,style=<span class="number">0</span>,validator=wx.D             efaultValidator,name=wx.TextCtrlNameStr)</span><br></pre></td></tr></table></figure>
+
+<p>style：单行wx.TextCtrl的样式</p>
+<ul>
+<li><p>wx.TE_CENTER:控件中的文本居中</p>
+</li>
+<li><p>wx.TE_LEFT：控件中的文本左对齐，默认行为</p>
+</li>
+<li><p>wx.TE_NOHIDESEL：文本始终高亮显示，只适用于windows系统</p>
+</li>
+<li><p>wx.TE_PASSWORD：不显示输入的文本，以*代替</p>
+</li>
+<li><p>wx.TE_PROCESS_ENTER：如果使用该参数，那么当用户在控件内按Enter键时，一个文本输入事件将被触发。否                             则，按键事件内在的由该文本控件或该对话框管理。</p>
+</li>
+<li><p>wx.TE_PROCESS_TAB：如果指定了这个样式，那么通常的字符事件在Tab键按下时创建。否则tab由对话框来管理，通常是控件间的切换。</p>
+</li>
+<li><p>wx.TE_READONLY:文本控件只为可读，用户不能修改其中的文本。</p>
+</li>
+<li><p>wx.TE_RIGHT：控件中的文本右对齐。</p>
+</li>
+</ul>
+<p>value：显示在该控件中的初始文本</p>
+<p>validator：常用于过滤数据以确保只能输入要接受的数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyFrame</span>(wx.Frame):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,parent,<span class="built_in">id</span></span>):</span><br><span class="line">        wx.Frame.__init__(self,parent,<span class="built_in">id</span>,title=<span class="string">&quot;创建&quot;</span>,size=(<span class="number">400</span>,<span class="number">300</span>))</span><br><span class="line">        panel=wx.Panel(self)</span><br><span class="line">        self.title=wx.StaticText(panel, label=<span class="string">&quot;请输入用户名和密码&quot;</span>,pos=(<span class="number">140</span>,<span class="number">20</span>))</span><br><span class="line">        self.label_user=wx.StaticText(panel, label=<span class="string">&quot;用户名&quot;</span>,pos=(<span class="number">50</span>,<span class="number">50</span>))</span><br><span class="line">        self.label_pwd= wx.StaticText(panel, label=<span class="string">&quot;密 码&quot;</span>, pos=(<span class="number">50</span>, <span class="number">90</span>))</span><br><span class="line">        self.text_user=wx.TextCtrl(panel,pos=(<span class="number">100</span>,<span class="number">50</span>),size=(<span class="number">235</span>,<span class="number">25</span>),style=wx.TE_LEFT)</span><br><span class="line">        self.text_user = wx.TextCtrl(panel, pos=(<span class="number">100</span>, <span class="number">90</span>), size=(<span class="number">235</span>, <span class="number">25</span>), style=wx.TE_PASSWORD)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app=wx.App()</span><br><span class="line">    frame=MyFrame(parent=<span class="literal">None</span>,<span class="built_in">id</span>=-<span class="number">1</span>)</span><br><span class="line">    frame.Show()</span><br><span class="line">    app.MainLoop()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/3.png"></p>
+<h4 id="Button按钮类"><a href="#Button按钮类" class="headerlink" title="Button按钮类"></a>Button按钮类</h4><p>按钮时GUI界面中应用最广泛的控件，它常用于捕获用户生成的单击事件，其最明显的用途是触发绑定到一个处理函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wx.Button（parent,<span class="built_in">id</span>,label,pos,size=wxDefaultSize,style=<span class="number">0</span>,validator,name=<span class="string">&quot;button&quot;</span>）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyFrame</span>(wx.Frame):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,parent,<span class="built_in">id</span></span>):</span><br><span class="line">        wx.Frame.__init__(self,parent,<span class="built_in">id</span>,title=<span class="string">&quot;创建&quot;</span>,size=(<span class="number">400</span>,<span class="number">300</span>))</span><br><span class="line">        panel=wx.Panel(self)</span><br><span class="line">        self.title=wx.StaticText(panel, label=<span class="string">&quot;请输入用户名和密码&quot;</span>,pos=(<span class="number">140</span>,<span class="number">20</span>))</span><br><span class="line">        self.label_user=wx.StaticText(panel, label=<span class="string">&quot;用户名&quot;</span>,pos=(<span class="number">50</span>,<span class="number">50</span>))</span><br><span class="line">        self.label_pwd= wx.StaticText(panel, label=<span class="string">&quot;密 码&quot;</span>, pos=(<span class="number">50</span>, <span class="number">90</span>))</span><br><span class="line">        self.text_user=wx.TextCtrl(panel,pos=(<span class="number">100</span>,<span class="number">50</span>),size=(<span class="number">235</span>,<span class="number">25</span>),style=wx.TE_LEFT)</span><br><span class="line">        self.text_password = wx.TextCtrl(panel, pos=(<span class="number">100</span>, <span class="number">90</span>), size=(<span class="number">235</span>, <span class="number">25</span>), style=wx.TE_PASSWORD)</span><br><span class="line">        <span class="comment">#创建“确定”和&quot;取消&quot;按钮</span></span><br><span class="line">        self.bt_confirm = wx.Button(panel, label=<span class="string">&#x27;确定&#x27;</span>,pos=(<span class="number">105</span>,<span class="number">130</span>))</span><br><span class="line">        self.bt_cancel = wx.Button(panel,label=<span class="string">&#x27;取消&#x27;</span>,pos=(<span class="number">195</span>,<span class="number">130</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app=wx.App()</span><br><span class="line">    frame=MyFrame(parent=<span class="literal">None</span>,<span class="built_in">id</span>=-<span class="number">1</span>)</span><br><span class="line">    frame.Show()</span><br><span class="line">    app.MainLoop()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/4.png"></p>
+<h4 id="BoxSizer"><a href="#BoxSizer" class="headerlink" title="BoxSizer"></a>BoxSizer</h4><p>wxPython提供了5个Sizer，BoxSizer是其中最简单和灵活的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyFrame</span>(wx.Frame):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,parent,<span class="built_in">id</span></span>):</span><br><span class="line">        wx.Frame.__init__(self,parent,<span class="built_in">id</span>,<span class="string">&#x27;用户登录&#x27;</span>,size=(<span class="number">400</span>,<span class="number">300</span>))</span><br><span class="line">        <span class="comment">#创建面板</span></span><br><span class="line">        panel=wx.Panel(self)</span><br><span class="line">        self.title=wx.StaticText(panel, label=<span class="string">&quot;请输入用户名和密码&quot;</span>)</span><br><span class="line">        <span class="comment">#添加容器，容器中控件按纵向排列</span></span><br><span class="line">        v=wx.BoxSizer(wx.VERTICAL)</span><br><span class="line">        v.Add(self.title,proportion=<span class="number">0</span>,flag=wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER,border=<span class="number">15</span>)</span><br><span class="line">        panel.SetSizer(v)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app=wx.App()</span><br><span class="line">    frame=MyFrame(parent=<span class="literal">None</span>,<span class="built_in">id</span>=-<span class="number">1</span>)</span><br><span class="line">    frame.Show()</span><br><span class="line">    app.MainLoop()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/5.png"></p>
+<p>Add()语法格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Box_Add(control,proportion,flag,border)</span><br></pre></td></tr></table></figure>
+
+<p>control：要添加的控件</p>
+<p>proportion：所添加控件在定义的定位方式所代表方向上占据的空间比例。如果有3个按钮，它们的比例分别是0、1和2，它们都已经添加到一个宽度为30的水平排列wx.BoxSizer，起始宽度都是10.当sizer的宽度从30变成60时，按钮1的宽度保持不变，仍然是10，按钮2的宽度变为20，按钮3的宽度变为30</p>
+<p>flag：flag参数与border参数结合使用可以指定边距宽度：</p>
+<ul>
+<li><p>wx.LEFT：左边距</p>
+</li>
+<li><p>wx.RIGHT：右边距</p>
+</li>
+<li><p>wx.BOTTOM：底边距</p>
+</li>
+<li><p>wx.TOP：上边距</p>
+</li>
+<li><p>wx.ALL：上下左右四个边距</p>
+</li>
+</ul>
+<p>可以通过竖线“|”操作符来联合使用这些标志，比如wx.LEFT|WX.BOTTOM.<br>flag还可以与proportion参数结合，指定控件本身的对齐方式：</p>
+<ul>
+<li>wx.ALIGN_LEFT：左边对齐</li>
+<li>wx.ALIGN_RIGHT：右边对齐</li>
+<li>wx.ALIGN_TOP：顶部对齐</li>
+<li>wx.ALIGN_BOTTOM：底边对齐</li>
+<li>wx.ALIGN_GENTER_VERTICAL：垂直对齐</li>
+<li>wx.ALIGN_GENTER_HORIZONTAL：水平对齐</li>
+<li>wx.ALIGN_GENTER：居中对齐</li>
+<li>wx.EXPAND：所添加控件将占有sizer定位方向上所有可用的空间</li>
+<li>border：控制所添加控件的边距，就是在部件之间添加一些像素的空白</li>
+</ul>
+<h4 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h4><p>用户执行的动作就叫作事件，比如单击按钮就是一个单击事件</p>
+<p>利用控件的Bind（）方法可以将事件处理函数绑定到给定的事件上。例如，为“确定”按钮添加一个单击事件，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bt_confirm.Bind(wx.EVT_BUTTON,OnclickSubmit)</span><br></pre></td></tr></table></figure>
+
+<p>wx.EVT_BUTTON：事件类型为按钮类型。</p>
+<p>wx.EVT_MOTION：用户移动鼠标。</p>
+<p>wx.ENTER_WINDOW：用户进入窗口控件</p>
+<p>wx.LEAVE_WINDOW：用户离开窗口控件</p>
+<p>wx.EVT_MOUSEWHEEL：鼠标滚轮滑动</p>
+<p>OnclickSubmit：方法名。事件发生时执行该方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyFrame</span>(wx.Frame):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,parent,<span class="built_in">id</span></span>):</span><br><span class="line">        wx.Frame.__init__(self,parent,<span class="built_in">id</span>,<span class="string">&#x27;用户登录&#x27;</span>,size=(<span class="number">400</span>,<span class="number">300</span>))</span><br><span class="line">        <span class="comment">#创建面板</span></span><br><span class="line">        panel = wx.Panel(self)</span><br><span class="line">        <span class="comment">#创建确定和取消按钮，并绑定事件</span></span><br><span class="line">        self.bt_confirm = wx.Button(panel, label=<span class="string">&#x27;确定&#x27;</span>, pos=(<span class="number">105</span>, <span class="number">130</span>))</span><br><span class="line">        self.bt_cancel = wx.Button(panel, label=<span class="string">&#x27;取消&#x27;</span>, pos=(<span class="number">195</span>, <span class="number">130</span>))</span><br><span class="line">        self.bt_confirm.Bind(wx.EVT_BUTTON,self.OnclickSubmit)</span><br><span class="line"></span><br><span class="line">        self.bt_cancel.Bind(wx.EVT_BUTTON, self.OnclickCancel)</span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">        self.title = wx.StaticText(panel, label=<span class="string">&quot;请输入用户名和密码&quot;</span>, pos=(<span class="number">140</span>, <span class="number">20</span>))</span><br><span class="line">        self.label_user = wx.StaticText(panel, label=<span class="string">&quot;用户名&quot;</span>, pos=(<span class="number">50</span>, <span class="number">50</span>))</span><br><span class="line">        self.label_pwd = wx.StaticText(panel, label=<span class="string">&quot;密 码&quot;</span>, pos=(<span class="number">50</span>, <span class="number">90</span>))</span><br><span class="line">        self.text_user = wx.TextCtrl(panel, pos=(<span class="number">100</span>, <span class="number">50</span>), size=(<span class="number">235</span>, <span class="number">25</span>), style=wx.TE_LEFT)</span><br><span class="line">        self.text_password = wx.TextCtrl(panel, pos=(<span class="number">100</span>, <span class="number">90</span>), size=(<span class="number">235</span>, <span class="number">25</span>), style=wx.TE_PASSWORD)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnclickSubmit</span>(<span class="params">self,event</span>):</span><br><span class="line">        message=<span class="string">&quot;&quot;</span></span><br><span class="line">        username=self.text_user.GetValue()</span><br><span class="line">        password = self.text_password.GetValue()</span><br><span class="line">        <span class="keyword">if</span> username==<span class="string">&quot;&quot;</span> <span class="keyword">or</span> password==<span class="string">&quot;&quot;</span>:</span><br><span class="line">            message=<span class="string">&quot;用户名或密码不能为空&quot;</span></span><br><span class="line">        <span class="keyword">elif</span> username ==<span class="string">&quot;mr&quot;</span> <span class="keyword">or</span> password ==<span class="string">&quot;mrsoft&quot;</span>:</span><br><span class="line">            message=<span class="string">&quot;登陆成功&quot;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            message=<span class="string">&quot;用户名和密码不匹配&quot;</span></span><br><span class="line">        wx.MessageBox(message)<span class="comment">#弹出提示框</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnclickCancel</span>(<span class="params">self,event</span>):</span><br><span class="line">        self.text_user.SetValue(<span class="string">&quot;&quot;</span>)<span class="comment">#清空用户框</span></span><br><span class="line">        self.text_password.SetValue(<span class="string">&quot;&quot;</span>)<span class="comment">#清空密码框</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app = wx.App()</span><br><span class="line">    frame = MyFrame(parent=<span class="literal">None</span>,<span class="built_in">id</span>=-<span class="number">1</span>)</span><br><span class="line">    frame.Show()</span><br><span class="line">    app.MainLoop()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/6.png"></p>
+<p><img src="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/7.png"></p>
+<p><img src="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/8.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lmpcl.cn/2022/03/29/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="京都小白">
+      <meta itemprop="description" content="每一个不曾起舞的日子，都是对生命的辜负">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="京宅">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/29/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">python面向对象基础</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-29 11:52:17 / 修改时间：13:21:50" itemprop="dateCreated datePublished" datetime="2022-03-29T11:52:17+08:00">2022-03-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" itemprop="url" rel="index"><span itemprop="name">面向对象</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="面向对象与面向过程的区别（举例说明）"><a href="#面向对象与面向过程的区别（举例说明）" class="headerlink" title="面向对象与面向过程的区别（举例说明）"></a>面向对象与面向过程的区别（举例说明）</h4><p>面向过程：吃饭的时候，必须严格按照步骤，第一步生火，第二步洗菜，第三步放油，第四步放菜，第五步炒菜，第六步端菜</p>
+<p>面向对象：只需要点外卖打个电话，不需要知晓菜是谁买的，饭是谁做的，外卖是是谁送的，只要拿到饭了就可以</p>
+<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><p>对象是一个抽象的概念，表示任意存在的事物。通常将对象划分为两个部分，静态部分称为属性，动态部分称为行为。</p>
+<h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><p>类是多个类似事物组成的群体的统称，是封装对象的属性和行为的载体，反过来说，具有相同属性和行为的一类实体被称为类。</p>
+<p>&#x3D;&#x3D;类是对象的抽象，对象是类的实体（实例）。&#x3D;&#x3D;</p>
+<h4 id="面向对象程序设计的三大特点"><a href="#面向对象程序设计的三大特点" class="headerlink" title="面向对象程序设计的三大特点"></a>面向对象程序设计的三大特点</h4><h6 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h6><p>将对象的属性和行为封装起来，而将这些封装起来的载体就是类。</p>
+<ul>
+<li>将属性和行为包装到类对象中。在方法内部对属性进行操作，在类对象的外部调用方法。这样无须关心方法内部的具体实现细节，隔离了复杂度。</li>
+<li>如果该属性不希望被类对象外部所访问，可在前面加两个_(类似于C++私有变量)，但如果想访问可使用以下语法</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_类名__属性</span><br></pre></td></tr></table></figure>
+
+<h6 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h6><p>子类通过继承复用了父类的属性和行为的同时，又增加了子类特有的属性和行为，提高了代码的复用性。</p>
+<ul>
+<li>如果一个类没有继承任何类，则默认继承object</li>
+<li>定义子类时，必须在其构造函数中调用父类的构造函数</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class A（object):</span><br><span class="line">    pass</span><br><span class="line">class B(A):</span><br><span class="line">    pass</span><br></pre></td></tr></table></figure>
+
+<h6 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h6><p>一个父类衍生出不同的子类，子类继承父类特征的同时，也具备了自己的特征，并且能够实现不同的效果，这就是多态化的结构，提高了代码的可扩展性和可维护性。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">eat</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;动物会吃&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>(<span class="title class_ inherited__">Animal</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">eat</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;狗吃骨头&#x27;</span>)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span>(<span class="title class_ inherited__">Animal</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">eat</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;猫吃鱼&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fun</span>(<span class="params">obj</span>):</span><br><span class="line">    obj.eat()</span><br><span class="line"></span><br><span class="line">fun(Animal())  <span class="comment">#因为Animal是类对象，Animal（）为实例对象</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="类的定义和使用"><a href="#类的定义和使用" class="headerlink" title="类的定义和使用"></a>类的定义和使用</h4><h5 id="定义类"><a href="#定义类" class="headerlink" title="定义类"></a>定义类</h5><p>在python中，类的定义使用class关键字来实现，语法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span>:</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;类的帮助信息&#x27;&#x27;&#x27;</span> <span class="comment">#类的帮助信息（即注释）</span></span><br><span class="line">    statement         <span class="comment">#类体（由类变量、方法和属性等定义语句组成）</span></span><br></pre></td></tr></table></figure>
+
+<p>ClassName：用于指定类名，一般使用大写字母开头，如果类中包含两个单词，第二个单词的首字母也大写。</p>
+<h5 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    grade = <span class="string">&#x27;four&#x27;</span>       <span class="comment">#类属性，直接写在类中的变量叫类属性</span></span><br><span class="line">    <span class="comment">#初始化方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,age</span>):  <span class="comment">#name与age是实例属性</span></span><br><span class="line">        self.name = name  <span class="comment">#self.name是实例属性，这里进行了赋值操作，属性名与变量名可以不相同</span></span><br><span class="line">        self.age = age</span><br><span class="line">    <span class="comment">#实例方法</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">info</span>(<span class="params">self</span>):</span><br><span class="line">         <span class="built_in">print</span>(<span class="string">&#x27;我的名字是&#x27;</span>+self.name+<span class="string">&#x27; 年龄是&#x27;</span>+self.age)</span><br><span class="line">    <span class="comment">#类方法</span></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">cm</span>(<span class="params">cls</span>):       <span class="comment">#类方法中写cls</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;类方法&#x27;</span>)</span><br><span class="line">    <span class="comment">#静态方法</span></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sm</span>():          <span class="comment">#在静态方法中不允许写self</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;静态方法&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在类之外定义的称为函数，在类之内定义的称为方法</p>
+<p>实例方法用来修改实例属性，类方法用来修改类属性</p>
+<h6 id="类属性"><a href="#类属性" class="headerlink" title="类属性"></a>类属性</h6><p>类中方法外的属性称为类属性，被该类所有的对象所共享</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#调用语法</span></span><br><span class="line"><span class="built_in">print</span>(Student.grade)</span><br><span class="line"><span class="built_in">print</span>(stu1.grade)</span><br></pre></td></tr></table></figure>
+
+<p>当Student.grade改变时，stu1.grade也改变</p>
+<h6 id="类方法"><a href="#类方法" class="headerlink" title="类方法"></a>类方法</h6><p>使用@classmethod修饰的方法，使用类名直接访问的方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#调用语法</span></span><br><span class="line">Student.cm()</span><br></pre></td></tr></table></figure>
+
+<h6 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h6><p>使用@staticmethod修饰的方法，使用类名直接访问的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#调用语法</span><br><span class="line">Student.sm()</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stu1 = Student(<span class="string">&#x27;张三&#x27;</span>,<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在实例对象stu1中，会有一个类指针指向类对象Student，此时stu1就可以调用类中的方法和属性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stu1.info()<span class="comment">#调用实例方法</span></span><br><span class="line"><span class="built_in">print</span>(stu1.name)<span class="comment">#调用初始化方法</span></span><br><span class="line">Student.info(stu1)<span class="comment">#调用实例方法的另一种形式</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="动态绑定属性和方法"><a href="#动态绑定属性和方法" class="headerlink" title="动态绑定属性和方法"></a>动态绑定属性和方法</h4><p>比如上面的stu1张三同学想要再添加一个性别属性，直接在类外进行赋值即可动态绑定</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stu1.gender = &#x27;女&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>如果想要添加动态方法，则在类外定义一个函数，并将此函数赋给对象的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def show():</span><br><span class="line">    print(&#x27;动态绑定方法&#x27;)</span><br><span class="line">stu1.show = show</span><br><span class="line">#调用</span><br><span class="line">stu1.show()</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h4><ul>
+<li>如果子类对继承自父类的某个属性或方法不满意，可以在子类中对其（方法体）进行编写</li>
+<li>子类重写后的方法可以中可以通过super().xxx()调用父类中被重写的方法</li>
+<li>重写是多态的一种表现形式</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Person(object):</span><br><span class="line">    def __init__(self, name, age):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line"></span><br><span class="line">    def info(self):</span><br><span class="line">        print(&#x27;姓名：&#123;0&#125;，年龄：&#123;1&#125;&#x27;.format(self.name, self.age))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 定义子类</span><br><span class="line">class Student(Person):</span><br><span class="line">    def __init__(self, name, age, score):</span><br><span class="line">        super().__init__(name, age)  # 重写</span><br><span class="line">        self.score = score</span><br><span class="line"></span><br><span class="line">    def info(self):</span><br><span class="line">        super().info() #继承</span><br><span class="line">        print(&#x27;成绩&#123;0&#125;&#x27;.format(self.score))#重写</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p = Person(&#x27;sun&#x27;, 2)</span><br><span class="line">p.info()</span><br><span class="line">r = Student(&#x27;jie&#x27;, 3, 45)</span><br><span class="line">r.info()</span><br></pre></td></tr></table></figure>
+
+<h4 id="特殊属性与方法"><a href="#特殊属性与方法" class="headerlink" title="特殊属性与方法"></a>特殊属性与方法</h4><p><img src="/2022/03/29/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/01.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        self.name = name</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__add__</span>(<span class="params">self, other</span>):</span><br><span class="line">        <span class="keyword">return</span> self.name+other.name</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__len__</span>(<span class="params">self</span>):<span class="comment">#重写此方法用来查看类中某属性的长度</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(self.name)</span><br><span class="line"></span><br><span class="line">stu1 = Student(<span class="string">&#x27;张三&#x27;</span>)</span><br><span class="line">stu2 = Student(<span class="string">&#x27;李四&#x27;</span>)</span><br><span class="line">stu3 = Student(<span class="string">&#x27;Jack&#x27;</span>)</span><br><span class="line"></span><br><span class="line">s = stu1+stu2<span class="comment">#因为Student类中的add方法使stu1与stu2具有加的功能</span></span><br><span class="line"><span class="built_in">print</span>(s)</span><br><span class="line">r = stu1.__add__(stu2)<span class="comment">#调用对象方法</span></span><br><span class="line"><span class="built_in">print</span>(r)</span><br><span class="line">m = stu3.__len__()</span><br><span class="line"><span class="built_in">print</span>(m)</span><br></pre></td></tr></table></figure>
+
+<p>__new__方法是创建对象，并要返回一个实例对象，__init__方法则是初始化这个对象</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lmpcl.cn/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="京都小白">
+      <meta itemprop="description" content="每一个不曾起舞的日子，都是对生命的辜负">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="京宅">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">MySQL安装配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-25 18:08:34" itemprop="dateCreated datePublished" datetime="2022-03-25T18:08:34+08:00">2022-03-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-12 16:57:06" itemprop="dateModified" datetime="2022-04-12T16:57:06+08:00">2022-04-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="MySQ下载"><a href="#MySQ下载" class="headerlink" title="MySQ下载"></a>MySQ下载</h4><p>官网地址：<a target="_blank" rel="noopener" href="https://www.mysql.com/">MySQL</a> </p>
+<p>官网如今已经没有X64版本的直接exe版本，而是zip版本，注意要下载社区版（如果需求为企业版的话，当我没说）</p>
+<p>安装步骤：</p>
+<ol>
+<li>进入官网，点击DOWNLOADS</li>
+</ol>
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/1.png"></p>
+<ol start="2">
+<li>下滑看到community下载，点击</li>
+</ol>
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/6.png"></p>
+<ol start="3">
+<li>点击MySQL Community Server</li>
+</ol>
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/7.png"></p>
+<ol start="4">
+<li>选择安装包进行下载</li>
+</ol>
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/8.png"></p>
+<p>下载过程中唯一需要注意的是安装位置，其他部分只需要跟着安装包next就好，我选择装在了D盘，如果C盘空间不足的话，装在其他空闲磁盘比较保险。</p>
+<h4 id="MySQL安装"><a href="#MySQL安装" class="headerlink" title="MySQL安装"></a>MySQL安装</h4><ol>
+<li><p>下载完成后打开文件（刚才所安装的路径）</p>
+</li>
+<li><p>在如下文件中新添一个配置文件my<br>配置方法：新建txt文件—&gt;文件命名为my—&gt;保存（此时文件名应该显示为my.txt）—&gt;重命名（将txt改为ini），保存</p>
+</li>
+<li><p>同样在此目录下新建一个data文件，此时你的文件夹应该如下图所示</p>
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/9.png"></p>
+</li>
+<li><p>在my.ini文件中添加如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"></span><br><span class="line">#绑定IPv4和3306端口</span><br><span class="line">bind-address = 0.0.0.0</span><br><span class="line">port = 3306</span><br><span class="line"></span><br><span class="line"># 设置mysql的安装目录</span><br><span class="line">basedir=D:\MySQL\mysql-8.0.28-winx64（此处文件位置按照个人实际位置来定）</span><br><span class="line"></span><br><span class="line"># 设置mysql数据库的数据的存放目录</span><br><span class="line">datadir=D:\MySQL\mysql-8.0.28-winx64\data（此处文件位置即为上面所建立的data文件位置）</span><br><span class="line"></span><br><span class="line"># 允许最大连接数</span><br><span class="line">max_connections=200</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用管理员模式打开cmd</p>
+<p>[^这里的d：意思是转到D盘，如果MySQL安装在了其他盘，同理转入]: </p>
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/2.webp"></p>
+</li>
+</ol>
+<ol start="6">
+<li>紧接着输入下面一行指令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqlid install</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/4.webp"></p>
+<p>[^安装成功即如图所示]: </p>
+<ol start="7">
+<li>开启mysql检验是否安装成功，输入下面指令（注意此时还是要在刚才的bin路径里）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start mysql</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/5.webp"></p>
+<p>至此mysql就安装成功了，但是每次都需要进入D盘路径中执行指令太过麻烦，于是我们需要更改一下路径变量。</p>
+<h4 id="更改路径变量"><a href="#更改路径变量" class="headerlink" title="更改路径变量"></a>更改路径变量</h4><ol>
+<li><p>右击此电脑，打开属性，进入高级系统设置，点击环境变量<br><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/10.png"></p>
+</li>
+<li><p>先进行用户变量路径配置，点击path，再点击编辑，进入页面点击新建，将bin路径写进去</p>
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/11.png"></p>
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/12.png"></p>
+</li>
+<li><p>环境变量也进行这样类似的操作，但是记得这里的路径bin后面要加\</p>
+</li>
+</ol>
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/13.png"></p>
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/14.png"></p>
+<p>此时再打开cmd时就不需要再进入D盘，直接进行mysql操作就可以。</p>
+<h4 id="登录mysql"><a href="#登录mysql" class="headerlink" title="登录mysql"></a>登录mysql</h4><ol>
+<li><p>mysql会给账户设置初始化密码，打开自己建立的data文件夹中的ERR文件，里面有着初始化密码</p>
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/15.png"></p>
+</li>
+</ol>
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/16.png"></p>
+<p>圈住的就是你的初始化密码，如果没有显示密码，说明你的密码为空，回车即可，密码自然也可以进行更改（不然我怎么会把我的密码就这么放出来）</p>
+<ol start="2">
+<li>cmd登录mysql（管理员身份打开）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p>输入以上指令后，系统会要求你输入密码（如果没有进行更改，就是你上面找到的密码）</p>
+<p>如果操作无误，应该出现下面的页面</p>
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/20.png"></p>
+<p>此时你已经登入了mysql，若要进行密码的更改，输入以下指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set password for username @localhost = password(newpwd);</span><br></pre></td></tr></table></figure>
+
+<p>这个分号就是指令的一部分，不是我多写的</p>
+<h4 id="退出登录"><a href="#退出登录" class="headerlink" title="退出登录"></a>退出登录</h4><p>若要退出mysql，可以输入下面三种的任何一种方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">quit；</span><br><span class="line">\q</span><br><span class="line">exit;</span><br></pre></td></tr></table></figure>
+
+<p>此时你的mysql已经配置完成</p>
+<h4 id="MySQL-WorkBench安装"><a href="#MySQL-WorkBench安装" class="headerlink" title="MySQL WorkBench安装"></a>MySQL WorkBench安装</h4><p>下载链接（8.0.28版本）：</p>
+<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/workbench/">MySQL :: Download MySQL Workbench</a> </p>
+<p>WorkBench没有那么多讲究，要说的还是安装路径这一点，注意C盘不要爆了，按照安装流程next就可以了</p>
+<h4 id="MySQL-WorkBench配置"><a href="#MySQL-WorkBench配置" class="headerlink" title="MySQL WorkBench配置"></a>MySQL WorkBench配置</h4><p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/20191002185455464.png"></p>
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/20191002185506753.png"></p>
+<p><img src="/2022/03/25/MySQL%E9%85%8D%E7%BD%AE/20191002185512577.png"></p>
+<p>你的MySQL已经配置好了，后续操作我也还在探索哈哈，快乐地开始数据库的世界吧！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="京都小白"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">京都小白</p>
+  <div class="site-description" itemprop="description">每一个不曾起舞的日子，都是对生命的辜负</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+      
+      <div>
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+      src="//music.163.com/outchain/player?type=2&id=421137559&auto=1&height=66"></iframe>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">京都小白</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
     </footer>
   </div>
-  
-</article>
-
-
 
   
+  
+  <script color='0,0,255' opacity='1' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
 
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li></ul>
-    </div>
-  </div>
+<script src="/js/schemes/pisces.js"></script>
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/04/12/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+<script src="/js/next-boot.js"></script>
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
 
 
 
 
 
-  </div>
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
 </body>
 </html>

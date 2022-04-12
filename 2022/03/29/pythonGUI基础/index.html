@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lmpcl.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="GUI简介GUI是Graphical User Interface（图形用户界面）的缩写。在GUI中，并不只是输入文本和返回文本，用户可以看到窗口、按钮、文本框等图形，而且可以用鼠标单击，还可以通过键盘输入。GUI是与程序交互不同的一种方式。GUI有三个基本要素：输入、处理和输出。    工具包 描述    wxPython python语言的一套GUI图形库，可以方便地创建完整的GUI用户界面">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pythonGUI基础">
+<meta property="og:url" content="http://lmpcl.cn/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="京宅">
+<meta property="og:description" content="GUI简介GUI是Graphical User Interface（图形用户界面）的缩写。在GUI中，并不只是输入文本和返回文本，用户可以看到窗口、按钮、文本框等图形，而且可以用鼠标单击，还可以通过键盘输入。GUI是与程序交互不同的一种方式。GUI有三个基本要素：输入、处理和输出。    工具包 描述    wxPython python语言的一套GUI图形库，可以方便地创建完整的GUI用户界面">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://lmpcl.cn/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/1.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/2.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/3.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/4.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/5.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/6.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/7.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/8.png">
+<meta property="article:published_time" content="2022-03-29T06:26:02.000Z">
+<meta property="article:modified_time" content="2022-03-30T03:28:01.642Z">
+<meta property="article:author" content="京都小白">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://lmpcl.cn/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/1.png">
+
+<link rel="canonical" href="http://lmpcl.cn/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>pythonGUI基础 | 京宅</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">京宅</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lmpcl.cn/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="京都小白">
+      <meta itemprop="description" content="每一个不曾起舞的日子，都是对生命的辜负">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="京宅">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pythonGUI基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-29 14:26:02" itemprop="dateCreated datePublished" datetime="2022-03-29T14:26:02+08:00">2022-03-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-30 11:28:01" itemprop="dateModified" datetime="2022-03-30T11:28:01+08:00">2022-03-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/GUI%E7%95%8C%E9%9D%A2%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">GUI界面编程</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="GUI简介"><a href="#GUI简介" class="headerlink" title="GUI简介"></a>GUI简介</h4><p>GUI是Graphical User Interface（图形用户界面）的缩写。在GUI中，并不只是输入文本和返回文本，用户可以看到窗口、按钮、文本框等图形，而且可以用鼠标单击，还可以通过键盘输入。GUI是与程序交互不同的一种方式。GUI有三个基本要素：输入、处理和输出。</p>
+<table>
+<thead>
+<tr>
+<th align="center">工具包</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">wxPython</td>
+<td align="center">python语言的一套GUI图形库，可以方便地创建完整的GUI用户界面</td>
+</tr>
+<tr>
+<td align="center">Kivy</td>
+<td align="center">开源工具包，能让相同源代码创建的程序跨平台运行</td>
+</tr>
+<tr>
+<td align="center">Flexx</td>
+<td align="center">纯python工具包，用来创建图形化界面应用程序。使用Web技术进行界面的渲染</td>
+</tr>
+<tr>
+<td align="center">PyQt</td>
+<td align="center">是Qt库的python版本，支持跨平台</td>
+</tr>
+<tr>
+<td align="center">Tkinter</td>
+<td align="center">是TK图形用户界面工具包标准的python接口。TK是一个轻量级的跨平台图形GUI开发工具</td>
+</tr>
+<tr>
+<td align="center">Pywin32</td>
+<td align="center">允许用户像VC一样使用python开发win32应用</td>
+</tr>
+<tr>
+<td align="center">PyGTK</td>
+<td align="center">让用户轻松创建具有图形用户界面的程序</td>
+</tr>
+<tr>
+<td align="center">pyui4win</td>
+<td align="center">开源的采用自绘技术的界面库</td>
+</tr>
+</tbody></table>
+<h4 id="使用wx-Frame框架"><a href="#使用wx-Frame框架" class="headerlink" title="使用wx.Frame框架"></a>使用wx.Frame框架</h4><p>在GUI中，框架通常也成为窗口。在wxPython中，wx.Frame是所有框架的父类。当用户创建wx.Frame的子类时，子类应该调用父类的构造器wx.Frame.____<strong>init</strong>()。wx.Frame的构造器语法格式如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wx.Frame(parent,<span class="built_in">id</span>=-<span class="number">1</span>,title=<span class="string">&quot;&quot;</span>,pos=wx.DefaultPosition,size=wx.DefaultSize,style=wx.DEFAULT_FRAME          _STYLE,name=<span class="string">&quot;frame&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>parent：框架的父窗口，如果是顶级窗口，这个值是None</p>
+<p>id：关于新窗口的wxPythonID号。通常设为-1，让wyPython自动给生成一个新的id</p>
+<p>title：窗口的标题</p>
+<p>pos：一个wx.Point对象，它指定这个新窗口的左上角在屏幕中的位置。在图形用户界面程序中，通常（0，0）是显示器的左上角。这个默认的（-1，-1）将让系统决定窗口的位置。</p>
+<p>size：一个wx.Size对象，它指定这个窗口的初始尺寸。默认的（-1，-1）将让系统决定窗口的初始尺寸。</p>
+<p>style：指定窗口的类型的常量。可以使用或运算来组合它们。</p>
+<p>name：框架的内在的名字，可以用它来寻找这个窗口。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyFrame</span>(wx.Frame):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, parent, <span class="built_in">id</span></span>):</span><br><span class="line">        wx.Frame.__init__(self,parent,<span class="built_in">id</span>,title = <span class="string">&quot;创建Frame&quot;</span>,pos = (<span class="number">100</span>,<span class="number">100</span>), size= (<span class="number">300</span>,<span class="number">300</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app = wx.App()</span><br><span class="line">    frame = MyFrame(parent=<span class="literal">None</span>, <span class="built_in">id</span>=-<span class="number">1</span>)</span><br><span class="line">    frame.Show()</span><br><span class="line">    app.MainLoop()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/1.png"></p>
+<h4 id="StaticText文本类"><a href="#StaticText文本类" class="headerlink" title="StaticText文本类"></a>StaticText文本类</h4><p>对于所有的UI工具来说，最基本的任务就是在屏幕上绘制纯文本。在wxPython中，可以使用wx.StaticText类来完成。使用wx.StaticText能够改变文本的对齐方式、字体和颜色等。构造函数语法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wx.StaticText(parent,id,label,pos=wx.DefaultPosition,size=wx.DefaultSize,style=0,name=&quot;staticTex               t&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>parent：父窗口插件</p>
+<p>id：使用-1可以自动创建一个唯一的标识</p>
+<p>label：显示在静态控件中的文本内容</p>
+<p>pos：一个wx.Point或者一个Python元组，它是窗口部件的位置</p>
+<p>size：一个wxSize或者一个Python元组，它是窗口部件的尺寸</p>
+<p>style：样式标记</p>
+<p>name：对象的名字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyFrame</span>(wx.Frame):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,parent,<span class="built_in">id</span></span>):</span><br><span class="line">        wx.Frame.__init__(self,parent,<span class="built_in">id</span>,title=<span class="string">&quot;创建StaticText类&quot;</span>,pos=(<span class="number">100</span>,<span class="number">100</span>),size=(<span class="number">600</span>,<span class="number">400</span>))</span><br><span class="line">        panel = wx.Panel(self)<span class="comment">#创建画板</span></span><br><span class="line">        <span class="comment">#创建标题，并设置字体</span></span><br><span class="line">        title = wx.StaticText(panel,label=<span class="string">&quot;python&quot;</span>,pos=(<span class="number">100</span>,<span class="number">20</span>))</span><br><span class="line">        font = wx.Font(<span class="number">16</span>,wx.DEFAULT,wx.FONTSTYLE_NORMAL,wx.NORMAL)</span><br><span class="line">        title.SetFont(font)</span><br><span class="line">        <span class="comment">#创建文本</span></span><br><span class="line">        wx.StaticText(panel,label=<span class="string">&#x27;人生苦短，我用python&#x27;</span>,pos=(<span class="number">50</span>,<span class="number">50</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app = wx.App()<span class="comment">#初始化应用</span></span><br><span class="line">    frame = MyFrame(parent=<span class="literal">None</span>, <span class="built_in">id</span>=-<span class="number">1</span>)<span class="comment">#实例化MyFrame类，并传递参数</span></span><br><span class="line">    frame.Show()<span class="comment">#显示窗口</span></span><br><span class="line">    app.MainLoop()<span class="comment">#调用主循环方法</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/2.png"></p>
+<h4 id="TextCtrl输入文本类"><a href="#TextCtrl输入文本类" class="headerlink" title="TextCtrl输入文本类"></a>TextCtrl输入文本类</h4><p>wx.wx.StaticText只能用于显示纯粹的静态文本，但是有时需要输入文本与用户进行交互，此时需要TextCtrl文本类，它允许输入单行和多行文本，也可以作为密码输入控件，掩饰所按下的按键。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wx.TextCtrl(parent,<span class="built_in">id</span>,value=<span class="string">&quot;&quot;</span>,pos=wx.DefaultPosition,size=wx.DefaultSize,style=<span class="number">0</span>,validator=wx.D             efaultValidator,name=wx.TextCtrlNameStr)</span><br></pre></td></tr></table></figure>
+
+<p>style：单行wx.TextCtrl的样式</p>
+<ul>
+<li><p>wx.TE_CENTER:控件中的文本居中</p>
+</li>
+<li><p>wx.TE_LEFT：控件中的文本左对齐，默认行为</p>
+</li>
+<li><p>wx.TE_NOHIDESEL：文本始终高亮显示，只适用于windows系统</p>
+</li>
+<li><p>wx.TE_PASSWORD：不显示输入的文本，以*代替</p>
+</li>
+<li><p>wx.TE_PROCESS_ENTER：如果使用该参数，那么当用户在控件内按Enter键时，一个文本输入事件将被触发。否                             则，按键事件内在的由该文本控件或该对话框管理。</p>
+</li>
+<li><p>wx.TE_PROCESS_TAB：如果指定了这个样式，那么通常的字符事件在Tab键按下时创建。否则tab由对话框来管理，通常是控件间的切换。</p>
+</li>
+<li><p>wx.TE_READONLY:文本控件只为可读，用户不能修改其中的文本。</p>
+</li>
+<li><p>wx.TE_RIGHT：控件中的文本右对齐。</p>
+</li>
+</ul>
+<p>value：显示在该控件中的初始文本</p>
+<p>validator：常用于过滤数据以确保只能输入要接受的数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyFrame</span>(wx.Frame):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,parent,<span class="built_in">id</span></span>):</span><br><span class="line">        wx.Frame.__init__(self,parent,<span class="built_in">id</span>,title=<span class="string">&quot;创建&quot;</span>,size=(<span class="number">400</span>,<span class="number">300</span>))</span><br><span class="line">        panel=wx.Panel(self)</span><br><span class="line">        self.title=wx.StaticText(panel, label=<span class="string">&quot;请输入用户名和密码&quot;</span>,pos=(<span class="number">140</span>,<span class="number">20</span>))</span><br><span class="line">        self.label_user=wx.StaticText(panel, label=<span class="string">&quot;用户名&quot;</span>,pos=(<span class="number">50</span>,<span class="number">50</span>))</span><br><span class="line">        self.label_pwd= wx.StaticText(panel, label=<span class="string">&quot;密 码&quot;</span>, pos=(<span class="number">50</span>, <span class="number">90</span>))</span><br><span class="line">        self.text_user=wx.TextCtrl(panel,pos=(<span class="number">100</span>,<span class="number">50</span>),size=(<span class="number">235</span>,<span class="number">25</span>),style=wx.TE_LEFT)</span><br><span class="line">        self.text_user = wx.TextCtrl(panel, pos=(<span class="number">100</span>, <span class="number">90</span>), size=(<span class="number">235</span>, <span class="number">25</span>), style=wx.TE_PASSWORD)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app=wx.App()</span><br><span class="line">    frame=MyFrame(parent=<span class="literal">None</span>,<span class="built_in">id</span>=-<span class="number">1</span>)</span><br><span class="line">    frame.Show()</span><br><span class="line">    app.MainLoop()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/3.png"></p>
+<h4 id="Button按钮类"><a href="#Button按钮类" class="headerlink" title="Button按钮类"></a>Button按钮类</h4><p>按钮时GUI界面中应用最广泛的控件，它常用于捕获用户生成的单击事件，其最明显的用途是触发绑定到一个处理函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wx.Button（parent,<span class="built_in">id</span>,label,pos,size=wxDefaultSize,style=<span class="number">0</span>,validator,name=<span class="string">&quot;button&quot;</span>）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyFrame</span>(wx.Frame):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,parent,<span class="built_in">id</span></span>):</span><br><span class="line">        wx.Frame.__init__(self,parent,<span class="built_in">id</span>,title=<span class="string">&quot;创建&quot;</span>,size=(<span class="number">400</span>,<span class="number">300</span>))</span><br><span class="line">        panel=wx.Panel(self)</span><br><span class="line">        self.title=wx.StaticText(panel, label=<span class="string">&quot;请输入用户名和密码&quot;</span>,pos=(<span class="number">140</span>,<span class="number">20</span>))</span><br><span class="line">        self.label_user=wx.StaticText(panel, label=<span class="string">&quot;用户名&quot;</span>,pos=(<span class="number">50</span>,<span class="number">50</span>))</span><br><span class="line">        self.label_pwd= wx.StaticText(panel, label=<span class="string">&quot;密 码&quot;</span>, pos=(<span class="number">50</span>, <span class="number">90</span>))</span><br><span class="line">        self.text_user=wx.TextCtrl(panel,pos=(<span class="number">100</span>,<span class="number">50</span>),size=(<span class="number">235</span>,<span class="number">25</span>),style=wx.TE_LEFT)</span><br><span class="line">        self.text_password = wx.TextCtrl(panel, pos=(<span class="number">100</span>, <span class="number">90</span>), size=(<span class="number">235</span>, <span class="number">25</span>), style=wx.TE_PASSWORD)</span><br><span class="line">        <span class="comment">#创建“确定”和&quot;取消&quot;按钮</span></span><br><span class="line">        self.bt_confirm = wx.Button(panel, label=<span class="string">&#x27;确定&#x27;</span>,pos=(<span class="number">105</span>,<span class="number">130</span>))</span><br><span class="line">        self.bt_cancel = wx.Button(panel,label=<span class="string">&#x27;取消&#x27;</span>,pos=(<span class="number">195</span>,<span class="number">130</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app=wx.App()</span><br><span class="line">    frame=MyFrame(parent=<span class="literal">None</span>,<span class="built_in">id</span>=-<span class="number">1</span>)</span><br><span class="line">    frame.Show()</span><br><span class="line">    app.MainLoop()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/4.png"></p>
+<h4 id="BoxSizer"><a href="#BoxSizer" class="headerlink" title="BoxSizer"></a>BoxSizer</h4><p>wxPython提供了5个Sizer，BoxSizer是其中最简单和灵活的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyFrame</span>(wx.Frame):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,parent,<span class="built_in">id</span></span>):</span><br><span class="line">        wx.Frame.__init__(self,parent,<span class="built_in">id</span>,<span class="string">&#x27;用户登录&#x27;</span>,size=(<span class="number">400</span>,<span class="number">300</span>))</span><br><span class="line">        <span class="comment">#创建面板</span></span><br><span class="line">        panel=wx.Panel(self)</span><br><span class="line">        self.title=wx.StaticText(panel, label=<span class="string">&quot;请输入用户名和密码&quot;</span>)</span><br><span class="line">        <span class="comment">#添加容器，容器中控件按纵向排列</span></span><br><span class="line">        v=wx.BoxSizer(wx.VERTICAL)</span><br><span class="line">        v.Add(self.title,proportion=<span class="number">0</span>,flag=wx.BOTTOM|wx.TOP|wx.ALIGN_CENTER,border=<span class="number">15</span>)</span><br><span class="line">        panel.SetSizer(v)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app=wx.App()</span><br><span class="line">    frame=MyFrame(parent=<span class="literal">None</span>,<span class="built_in">id</span>=-<span class="number">1</span>)</span><br><span class="line">    frame.Show()</span><br><span class="line">    app.MainLoop()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/5.png"></p>
+<p>Add()语法格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Box_Add(control,proportion,flag,border)</span><br></pre></td></tr></table></figure>
+
+<p>control：要添加的控件</p>
+<p>proportion：所添加控件在定义的定位方式所代表方向上占据的空间比例。如果有3个按钮，它们的比例分别是0、1和2，它们都已经添加到一个宽度为30的水平排列wx.BoxSizer，起始宽度都是10.当sizer的宽度从30变成60时，按钮1的宽度保持不变，仍然是10，按钮2的宽度变为20，按钮3的宽度变为30</p>
+<p>flag：flag参数与border参数结合使用可以指定边距宽度：</p>
+<ul>
+<li><p>wx.LEFT：左边距</p>
+</li>
+<li><p>wx.RIGHT：右边距</p>
+</li>
+<li><p>wx.BOTTOM：底边距</p>
+</li>
+<li><p>wx.TOP：上边距</p>
+</li>
+<li><p>wx.ALL：上下左右四个边距</p>
+</li>
+</ul>
+<p>可以通过竖线“|”操作符来联合使用这些标志，比如wx.LEFT|WX.BOTTOM.<br>flag还可以与proportion参数结合，指定控件本身的对齐方式：</p>
+<ul>
+<li>wx.ALIGN_LEFT：左边对齐</li>
+<li>wx.ALIGN_RIGHT：右边对齐</li>
+<li>wx.ALIGN_TOP：顶部对齐</li>
+<li>wx.ALIGN_BOTTOM：底边对齐</li>
+<li>wx.ALIGN_GENTER_VERTICAL：垂直对齐</li>
+<li>wx.ALIGN_GENTER_HORIZONTAL：水平对齐</li>
+<li>wx.ALIGN_GENTER：居中对齐</li>
+<li>wx.EXPAND：所添加控件将占有sizer定位方向上所有可用的空间</li>
+<li>border：控制所添加控件的边距，就是在部件之间添加一些像素的空白</li>
+</ul>
+<h4 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h4><p>用户执行的动作就叫作事件，比如单击按钮就是一个单击事件</p>
+<p>利用控件的Bind（）方法可以将事件处理函数绑定到给定的事件上。例如，为“确定”按钮添加一个单击事件，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bt_confirm.Bind(wx.EVT_BUTTON,OnclickSubmit)</span><br></pre></td></tr></table></figure>
+
+<p>wx.EVT_BUTTON：事件类型为按钮类型。</p>
+<p>wx.EVT_MOTION：用户移动鼠标。</p>
+<p>wx.ENTER_WINDOW：用户进入窗口控件</p>
+<p>wx.LEAVE_WINDOW：用户离开窗口控件</p>
+<p>wx.EVT_MOUSEWHEEL：鼠标滚轮滑动</p>
+<p>OnclickSubmit：方法名。事件发生时执行该方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyFrame</span>(wx.Frame):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,parent,<span class="built_in">id</span></span>):</span><br><span class="line">        wx.Frame.__init__(self,parent,<span class="built_in">id</span>,<span class="string">&#x27;用户登录&#x27;</span>,size=(<span class="number">400</span>,<span class="number">300</span>))</span><br><span class="line">        <span class="comment">#创建面板</span></span><br><span class="line">        panel = wx.Panel(self)</span><br><span class="line">        <span class="comment">#创建确定和取消按钮，并绑定事件</span></span><br><span class="line">        self.bt_confirm = wx.Button(panel, label=<span class="string">&#x27;确定&#x27;</span>, pos=(<span class="number">105</span>, <span class="number">130</span>))</span><br><span class="line">        self.bt_cancel = wx.Button(panel, label=<span class="string">&#x27;取消&#x27;</span>, pos=(<span class="number">195</span>, <span class="number">130</span>))</span><br><span class="line">        self.bt_confirm.Bind(wx.EVT_BUTTON,self.OnclickSubmit)</span><br><span class="line"></span><br><span class="line">        self.bt_cancel.Bind(wx.EVT_BUTTON, self.OnclickCancel)</span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">        self.title = wx.StaticText(panel, label=<span class="string">&quot;请输入用户名和密码&quot;</span>, pos=(<span class="number">140</span>, <span class="number">20</span>))</span><br><span class="line">        self.label_user = wx.StaticText(panel, label=<span class="string">&quot;用户名&quot;</span>, pos=(<span class="number">50</span>, <span class="number">50</span>))</span><br><span class="line">        self.label_pwd = wx.StaticText(panel, label=<span class="string">&quot;密 码&quot;</span>, pos=(<span class="number">50</span>, <span class="number">90</span>))</span><br><span class="line">        self.text_user = wx.TextCtrl(panel, pos=(<span class="number">100</span>, <span class="number">50</span>), size=(<span class="number">235</span>, <span class="number">25</span>), style=wx.TE_LEFT)</span><br><span class="line">        self.text_password = wx.TextCtrl(panel, pos=(<span class="number">100</span>, <span class="number">90</span>), size=(<span class="number">235</span>, <span class="number">25</span>), style=wx.TE_PASSWORD)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnclickSubmit</span>(<span class="params">self,event</span>):</span><br><span class="line">        message=<span class="string">&quot;&quot;</span></span><br><span class="line">        username=self.text_user.GetValue()</span><br><span class="line">        password = self.text_password.GetValue()</span><br><span class="line">        <span class="keyword">if</span> username==<span class="string">&quot;&quot;</span> <span class="keyword">or</span> password==<span class="string">&quot;&quot;</span>:</span><br><span class="line">            message=<span class="string">&quot;用户名或密码不能为空&quot;</span></span><br><span class="line">        <span class="keyword">elif</span> username ==<span class="string">&quot;mr&quot;</span> <span class="keyword">or</span> password ==<span class="string">&quot;mrsoft&quot;</span>:</span><br><span class="line">            message=<span class="string">&quot;登陆成功&quot;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            message=<span class="string">&quot;用户名和密码不匹配&quot;</span></span><br><span class="line">        wx.MessageBox(message)<span class="comment">#弹出提示框</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">OnclickCancel</span>(<span class="params">self,event</span>):</span><br><span class="line">        self.text_user.SetValue(<span class="string">&quot;&quot;</span>)<span class="comment">#清空用户框</span></span><br><span class="line">        self.text_password.SetValue(<span class="string">&quot;&quot;</span>)<span class="comment">#清空密码框</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app = wx.App()</span><br><span class="line">    frame = MyFrame(parent=<span class="literal">None</span>,<span class="built_in">id</span>=-<span class="number">1</span>)</span><br><span class="line">    frame.Show()</span><br><span class="line">    app.MainLoop()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/6.png"></p>
+<p><img src="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/7.png"></p>
+<p><img src="/2022/03/29/pythonGUI%E5%9F%BA%E7%A1%80/8.png"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/29/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80/" rel="prev" title="python面向对象基础">
+      <i class="fa fa-chevron-left"></i> python面向对象基础
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/08/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89/" rel="next" title="java基础（一）">
+      java基础（一） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#GUI%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">GUI简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8wx-Frame%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">使用wx.Frame框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StaticText%E6%96%87%E6%9C%AC%E7%B1%BB"><span class="nav-number">3.</span> <span class="nav-text">StaticText文本类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TextCtrl%E8%BE%93%E5%85%A5%E6%96%87%E6%9C%AC%E7%B1%BB"><span class="nav-number">4.</span> <span class="nav-text">TextCtrl输入文本类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Button%E6%8C%89%E9%92%AE%E7%B1%BB"><span class="nav-number">5.</span> <span class="nav-text">Button按钮类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BoxSizer"><span class="nav-number">6.</span> <span class="nav-text">BoxSizer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">事件处理</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="京都小白"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">京都小白</p>
+  <div class="site-description" itemprop="description">每一个不曾起舞的日子，都是对生命的辜负</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+      
+      <div>
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+      src="//music.163.com/outchain/player?type=2&id=421137559&auto=1&height=66"></iframe>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">京都小白</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='1' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
