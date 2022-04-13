@@ -253,7 +253,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/04/11/python%E7%88%AC%E8%99%AB/" class="post-title-link" itemprop="url">python爬虫</a>
+            <a href="/2022/04/11/python%E7%88%AC%E8%99%AB/" class="post-title-link" itemprop="url">python爬虫（一）</a>
         </h2>
 
         <div class="post-meta">
@@ -270,7 +270,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-12 01:10:23" itemprop="dateModified" datetime="2022-04-12T01:10:23+08:00">2022-04-12</time>
+                <time title="修改时间：2022-04-13 10:38:19" itemprop="dateModified" datetime="2022-04-13T10:38:19+08:00">2022-04-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -296,7 +296,12 @@
           <p>爬虫不一定要用python，也可以用java和C，但是python是所有编程中最好上手的</p>
 <p>robots.txt协议：君子协议，规定了网络中哪些数据可以被爬取数据，哪些不可以</p>
 <p>爬虫：通过编写程序来获取网络上的资源</p>
-<h5 id="第一个爬虫"><a href="#第一个爬虫" class="headerlink" title="第一个爬虫"></a>第一个爬虫</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#页面源代码</span></span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line">url = <span class="string">&quot;https://blog.csdn.net/Jurbo/article/details/52313636&quot;</span></span><br><span class="line">resp = urlopen(url)</span><br><span class="line"><span class="built_in">print</span>(resp.read().decode(<span class="string">&quot;UTF-8&quot;</span>))//输出的字节解码后的</span><br></pre></td></tr></table></figure>
+<h4 id="什么是url"><a href="#什么是url" class="headerlink" title="什么是url"></a>什么是url</h4><p>URL是统一资源定位符，对可以从互联网上得到的资源的位置和访问方法的一种简洁的表示，是互联网上标准资源的地址。互联网上的每个文件都有一个唯一的URL，它包含的信息指出文件的位置以及浏览器应该怎处理它。 </p>
+<p><strong>URL由两个主要的部分构成</strong>：协议（Protocol）和目的地（Destination）。</p>
+<p>“<strong>协议</strong>”是告诉我们自己面对的是何种类型的Internet资源。</p>
+<p>web中最常见的协议是http，它表示从Web中取回的是HTML文档。其他协议还有gopher，ftp和telnet等。</p>
+<p><strong>“目的地“</strong>可以是某个文件名、目录名或者某台计算机的名称。</p>
+<h4 id="第一个爬虫"><a href="#第一个爬虫" class="headerlink" title="第一个爬虫"></a>第一个爬虫</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#页面源代码</span></span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line">url = <span class="string">&quot;https://blog.csdn.net/Jurbo/article/details/52313636&quot;</span></span><br><span class="line">resp = urlopen(url)</span><br><span class="line"><span class="built_in">print</span>(resp.read().decode(<span class="string">&quot;UTF-8&quot;</span>))//输出的字节解码后的</span><br></pre></td></tr></table></figure>
 
 <p>由于各大网站反爬虫的防护做的还是相当可以的，所以这样的基础代码只能算是一个小尝试，并不能拿来应用。</p>
 <h4 id="Web请求过程剖析"><a href="#Web请求过程剖析" class="headerlink" title="Web请求过程剖析"></a>Web请求过程剖析</h4><ul>
@@ -307,7 +312,51 @@
 <p>第一次请求只要一个html骨架，第二次请求拿到数据，进行数据展示，在页面源代码中看不到数据</p>
 </li>
 </ul>
-<p>####HTTP协议</p>
+<h4 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h4><p>协议：两个电脑传输数据时进行的君子约定</p>
+<p>HTTP全称Hyper Text Transfer Protocol（超文本传输协议），浏览器和服务器之间数据交互遵守的是HTTP协议</p>
+<p>HTTP不论是请求还是响应都是三块内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#请求</span><br><span class="line">请求行  ——&gt;  请求方式（get/post）  请求url地址  协议</span><br><span class="line">请求头  ——&gt;  放一些服务器需要的附加信息</span><br><span class="line">请求体  ——&gt;  一段放一些请求参数#真正要的东西</span><br><span class="line"></span><br><span class="line">#响应</span><br><span class="line">状态行  ——&gt;  协议  状态码</span><br><span class="line">响应头  ——&gt;  放一些客户端要使用的一些附加信息</span><br><span class="line">响应体  ——&gt;  服务器返回的真正客户端要用的内容（HTML,json等）</span><br></pre></td></tr></table></figure>
+
+<p>请求头中常见的一些内容（爬虫需要）：</p>
+<ol>
+<li>User-Agent：请求载体的身份标识（用什么发送的请求）</li>
+<li>Referer：防盗链（此次请求是从哪个页面来的）</li>
+<li>cookie：本地字符串数据信息（用户登录信息，反爬的token）</li>
+</ol>
+<h4 id="Requests"><a href="#Requests" class="headerlink" title="Requests"></a>Requests</h4><p>Request模块需要额外安装</p>
+<h5 id="案例一（get方式）"><a href="#案例一（get方式）" class="headerlink" title="案例一（get方式）"></a>案例一（get方式）</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://www.sogou.com/web?query=%E5%91%A8%E6%9D%B0%E4%BC%A6&#x27;</span></span><br><span class="line">resp = requests.get(url)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(resp)</span><br><span class="line"><span class="built_in">print</span>(resp.text)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB/1.png"></p>
+<p>从运行结果可以看出，网页给出了响应，但是明显制止了程序的爬虫操作。为了能够逃过网页的监视，我们要为自己设置一个浏览器身份。</p>
+<p>网页鼠标右键点击检查，并进入网络，刷新一下便出现了如下页面。</p>
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB/2.png"></p>
+<p>往下翻看，可以看到一个User-Agent，这是网页所显示的访问的浏览器身份，我们将它复制。</p>
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB/3.png"></p>
+<p>代码更改如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://www.sogou.com/web?query=%E5%91%A8%E6%9D%B0%E4%BC%A6&#x27;</span></span><br><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">resp = requests.get(url,headers = dic)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(resp)</span><br><span class="line"><span class="built_in">print</span>(resp.text)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB/4.png"></p>
+<p>此刻便如愿爬取了网页的源代码</p>
+<h5 id="案例二（post方式）"><a href="#案例二（post方式）" class="headerlink" title="案例二（post方式）"></a>案例二（post方式）</h5><p>我们用post方式来发送请求，想要获取什么就在右边寻找对应的文件，此时我想要获取蓝色圈住的这些数据，于是我找到了sug文件，并查看它的url。</p>
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB/6.png"></p>
+<p>我们将url赋值给代码的数据，并设置字典来保存我们想要查询的数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://fanyi.baidu.com/sug&quot;</span></span><br><span class="line">s = <span class="built_in">input</span>(<span class="string">&quot;输入&quot;</span>)</span><br><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;kw&quot;</span>: s</span><br><span class="line">&#125;</span><br><span class="line">resp = requests.post(url, data=dic)</span><br><span class="line"><span class="built_in">print</span>(resp.json())</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB/5.png"></p>
+<p>post请求一个数据，网页返回了这个单词的意思，就像pycharm的一个字典一样</p>
+<p>发送post的请求必须放在字典中，并用data传递数据</p>
+<h6 id="get与post的区别"><a href="#get与post的区别" class="headerlink" title="get与post的区别"></a>get与post的区别</h6><p>通过以上两个案例我们可以看到get请求方式仅仅是获取浏览器的数据，称为“显式访问”，而post在访问的时候会发送一个数据，比如上述案例的百度翻译原本我们想要查到的是dog的翻译，post方式发送了mun单词，最后我们获取到了mun的汉语意思，这称为“隐式访问”</p>
+<h5 id="案例三"><a href="#案例三" class="headerlink" title="案例三"></a>案例三</h5><p>XHR：第二次请求数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://movie.douban.com/j/chart/top_list&quot;</span></span><br><span class="line"><span class="comment">#封装参数</span></span><br><span class="line">param = &#123;</span><br><span class="line">    <span class="string">&quot;type&quot;</span>: <span class="string">&quot;24&quot;</span>,</span><br><span class="line">    <span class="string">&quot;interval_id&quot;</span>: <span class="string">&quot;100:90&quot;</span>,</span><br><span class="line">    <span class="string">&quot;action&quot;</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;start&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;limit&quot;</span>: <span class="string">&quot;20&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">reps = requests.get(url=url, params=param)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;默认User-Agent&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(reps.request.headers)<span class="comment">#输出默认访问身份</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB/7.png"></p>
+<p>我们寻找浏览器可以进入的User-Agent，并输入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://movie.douban.com/j/chart/top_list&quot;</span></span><br><span class="line"><span class="comment">#封装参数</span></span><br><span class="line">param = &#123;</span><br><span class="line">    <span class="string">&quot;type&quot;</span>: <span class="string">&quot;24&quot;</span>,</span><br><span class="line">    <span class="string">&quot;interval_id&quot;</span>: <span class="string">&quot;100:90&quot;</span>,</span><br><span class="line">    <span class="string">&quot;action&quot;</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;start&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;limit&quot;</span>: <span class="string">&quot;20&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">reps = requests.get(url=url, params=param,headers=headers)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(reps.text)</span><br><span class="line">reps.close()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB/8.png"></p>
+<p>如愿爬取到了信息，但是此时我们看起来不是很方便，转为json换成我们更熟悉的文件。</p>
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB/9.png"></p>
+<p>爬取完信息一定要记得关掉访问，不然会被反爬盯上</p>
 
       
     </div>
