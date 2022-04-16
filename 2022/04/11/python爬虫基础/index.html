@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lmpcl.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="[TOC] 爬虫不一定要用python，也可以用java和C，但是python是所有编程中最好上手的 robots.txt协议：君子协议，规定了网络中哪些数据可以被爬取数据，哪些不可以 爬虫：通过编写程序来获取网络上的资源 什么是urlURL是统一资源定位符，对可以从互联网上得到的资源的位置和访问方法的一种简洁的表示，是互联网上标准资源的地址。互联网上的每个文件都有一个唯一的URL，它包含的信息指">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python爬虫基础">
+<meta property="og:url" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="京宅">
+<meta property="og:description" content="[TOC] 爬虫不一定要用python，也可以用java和C，但是python是所有编程中最好上手的 robots.txt协议：君子协议，规定了网络中哪些数据可以被爬取数据，哪些不可以 爬虫：通过编写程序来获取网络上的资源 什么是urlURL是统一资源定位符，对可以从互联网上得到的资源的位置和访问方法的一种简洁的表示，是互联网上标准资源的地址。互联网上的每个文件都有一个唯一的URL，它包含的信息指">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/1.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/2.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/3.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/4.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/6.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/5.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/7.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/8.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/9.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/10.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/11.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/12.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/13.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/14.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/15.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/16.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/17.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/18.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/19.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/20.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/21.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/22.png">
+<meta property="og:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/23.png">
+<meta property="article:published_time" content="2022-04-11T13:45:41.000Z">
+<meta property="article:modified_time" content="2022-04-15T13:34:11.337Z">
+<meta property="article:author" content="京都小白">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/1.png">
+
+<link rel="canonical" href="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>python爬虫基础 | 京宅</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">京宅</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lmpcl.cn/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="京都小白">
+      <meta itemprop="description" content="每一个不曾起舞的日子，都是对生命的辜负">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="京宅">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python爬虫基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-11 21:45:41" itemprop="dateCreated datePublished" datetime="2022-04-11T21:45:41+08:00">2022-04-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-15 21:34:11" itemprop="dateModified" datetime="2022-04-15T21:34:11+08:00">2022-04-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%88%AC%E8%99%AB/" itemprop="url" rel="index"><span itemprop="name">爬虫</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>[TOC]</p>
+<p>爬虫不一定要用python，也可以用java和C，但是python是所有编程中最好上手的</p>
+<p>robots.txt协议：君子协议，规定了网络中哪些数据可以被爬取数据，哪些不可以</p>
+<p>爬虫：通过编写程序来获取网络上的资源</p>
+<h4 id="什么是url"><a href="#什么是url" class="headerlink" title="什么是url"></a>什么是url</h4><p>URL是统一资源定位符，对可以从互联网上得到的资源的位置和访问方法的一种简洁的表示，是互联网上标准资源的地址。互联网上的每个文件都有一个唯一的URL，它包含的信息指出文件的位置以及浏览器应该怎处理它。 </p>
+<p><strong>URL由两个主要的部分构成</strong>：协议（Protocol）和目的地（Destination）。</p>
+<p>“<strong>协议</strong>”是告诉我们自己面对的是何种类型的Internet资源。</p>
+<p>web中最常见的协议是http，它表示从Web中取回的是HTML文档。其他协议还有gopher，ftp和telnet等。</p>
+<p><strong>“目的地“</strong>可以是某个文件名、目录名或者某台计算机的名称。</p>
+<h4 id="第一个爬虫"><a href="#第一个爬虫" class="headerlink" title="第一个爬虫"></a>第一个爬虫</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#页面源代码</span></span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line">url = <span class="string">&quot;https://blog.csdn.net/Jurbo/article/details/52313636&quot;</span></span><br><span class="line">resp = urlopen(url)</span><br><span class="line"><span class="built_in">print</span>(resp.read().decode(<span class="string">&quot;UTF-8&quot;</span>))//输出的字节解码后的</span><br></pre></td></tr></table></figure>
+
+<p>由于各大网站反爬虫的防护做的还是相当可以的，所以这样的基础代码只能算是一个小尝试，并不能拿来应用。</p>
+<h4 id="Web请求过程剖析"><a href="#Web请求过程剖析" class="headerlink" title="Web请求过程剖析"></a>Web请求过程剖析</h4><ul>
+<li><p>服务器渲染</p>
+<p>在服务器那边直接把数据和html整合在一起，统一返回给浏览器，在页面源代码中能看到数据</p>
+</li>
+<li><p>客户端渲染</p>
+<p>第一次请求只要一个html骨架，第二次请求拿到数据，进行数据展示，在页面源代码中看不到数据</p>
+</li>
+</ul>
+<h4 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h4><p>协议：两个电脑传输数据时进行的君子约定</p>
+<p>HTTP全称Hyper Text Transfer Protocol（超文本传输协议），浏览器和服务器之间数据交互遵守的是HTTP协议</p>
+<p>HTTP不论是请求还是响应都是三块内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#请求</span><br><span class="line">请求行  ——&gt;  请求方式（get/post）  请求url地址  协议</span><br><span class="line">请求头  ——&gt;  放一些服务器需要的附加信息</span><br><span class="line">请求体  ——&gt;  一段放一些请求参数#真正要的东西</span><br><span class="line"></span><br><span class="line">#响应</span><br><span class="line">状态行  ——&gt;  协议  状态码</span><br><span class="line">响应头  ——&gt;  放一些客户端要使用的一些附加信息</span><br><span class="line">响应体  ——&gt;  服务器返回的真正客户端要用的内容（HTML,json等）</span><br></pre></td></tr></table></figure>
+
+<p>请求头中常见的一些内容（爬虫需要）：</p>
+<ol>
+<li>User-Agent：请求载体的身份标识（用什么发送的请求）</li>
+<li>Referer：防盗链（此次请求是从哪个页面来的）</li>
+<li>cookie：本地字符串数据信息（用户登录信息，反爬的token）</li>
+</ol>
+<h4 id="Requests"><a href="#Requests" class="headerlink" title="Requests"></a>Requests</h4><p>Request模块需要额外安装</p>
+<h5 id="案例一（get方式）"><a href="#案例一（get方式）" class="headerlink" title="案例一（get方式）"></a>案例一（get方式）</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://www.sogou.com/web?query=%E5%91%A8%E6%9D%B0%E4%BC%A6&#x27;</span></span><br><span class="line">resp = requests.get(url)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(resp)</span><br><span class="line"><span class="built_in">print</span>(resp.text)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/1.png"></p>
+<p>从运行结果可以看出，网页给出了响应，但是明显制止了程序的爬虫操作。为了能够逃过网页的监视，我们要为自己设置一个浏览器身份。</p>
+<p>网页鼠标右键点击检查，并进入网络，刷新一下便出现了如下页面。</p>
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/2.png"></p>
+<p>往下翻看，可以看到一个User-Agent，这是网页所显示的访问的浏览器身份，我们将它复制。</p>
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/3.png"></p>
+<p>代码更改如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://www.sogou.com/web?query=%E5%91%A8%E6%9D%B0%E4%BC%A6&#x27;</span></span><br><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">resp = requests.get(url,headers = dic)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(resp)</span><br><span class="line"><span class="built_in">print</span>(resp.text)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/4.png"></p>
+<p>此刻便如愿爬取了网页的源代码</p>
+<h5 id="案例二（post方式）"><a href="#案例二（post方式）" class="headerlink" title="案例二（post方式）"></a>案例二（post方式）</h5><p>我们用post方式来发送请求，想要获取什么就在右边寻找对应的文件，此时我想要获取蓝色圈住的这些数据，于是我找到了sug文件，并查看它的url。</p>
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/6.png"></p>
+<p>我们将url赋值给代码的数据，并设置字典来保存我们想要查询的数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://fanyi.baidu.com/sug&quot;</span></span><br><span class="line">s = <span class="built_in">input</span>(<span class="string">&quot;输入&quot;</span>)</span><br><span class="line">dic = &#123;</span><br><span class="line">    <span class="string">&quot;kw&quot;</span>: s</span><br><span class="line">&#125;</span><br><span class="line">resp = requests.post(url, data=dic)</span><br><span class="line"><span class="built_in">print</span>(resp.json())</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/5.png"></p>
+<p>post请求一个数据，网页返回了这个单词的意思，就像pycharm的一个字典一样</p>
+<p>发送post的请求必须放在字典中，并用data传递数据</p>
+<h6 id="get与post的区别"><a href="#get与post的区别" class="headerlink" title="get与post的区别"></a>get与post的区别</h6><p>通过以上两个案例我们可以看到get请求方式仅仅是获取浏览器的数据，称为“显式访问”，而post在访问的时候会发送一个数据，比如上述案例的百度翻译原本我们想要查到的是dog的翻译，post方式发送了mun单词，最后我们获取到了mun的汉语意思，这称为“隐式访问”</p>
+<h5 id="案例三"><a href="#案例三" class="headerlink" title="案例三"></a>案例三</h5><p>XHR：第二次请求数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://movie.douban.com/j/chart/top_list&quot;</span></span><br><span class="line"><span class="comment">#封装参数</span></span><br><span class="line">param = &#123;</span><br><span class="line">    <span class="string">&quot;type&quot;</span>: <span class="string">&quot;24&quot;</span>,</span><br><span class="line">    <span class="string">&quot;interval_id&quot;</span>: <span class="string">&quot;100:90&quot;</span>,</span><br><span class="line">    <span class="string">&quot;action&quot;</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;start&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;limit&quot;</span>: <span class="string">&quot;20&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">reps = requests.get(url=url, params=param)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;默认User-Agent&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(reps.request.headers)<span class="comment">#输出默认访问身份</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/7.png"></p>
+<p>我们寻找浏览器可以进入的User-Agent，并输入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">&quot;https://movie.douban.com/j/chart/top_list&quot;</span></span><br><span class="line"><span class="comment">#封装参数</span></span><br><span class="line">param = &#123;</span><br><span class="line">    <span class="string">&quot;type&quot;</span>: <span class="string">&quot;24&quot;</span>,</span><br><span class="line">    <span class="string">&quot;interval_id&quot;</span>: <span class="string">&quot;100:90&quot;</span>,</span><br><span class="line">    <span class="string">&quot;action&quot;</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;start&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;limit&quot;</span>: <span class="string">&quot;20&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">reps = requests.get(url=url, params=param,headers=headers)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(reps.text)</span><br><span class="line">reps.close()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/8.png"></p>
+<p>如愿爬取到了信息，但是此时我们看起来不是很方便，转为json换成我们更熟悉的文件。</p>
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/9.png"></p>
+<p>爬取完信息一定要记得关掉访问，不然会被反爬盯上</p>
+<h4 id="数据解析概述"><a href="#数据解析概述" class="headerlink" title="数据解析概述"></a>数据解析概述</h4><h5 id="re解析"><a href="#re解析" class="headerlink" title="re解析"></a>re解析</h5><p>re解析即正则解析，在线正则表达式测试：<a target="_blank" rel="noopener" href="https://tool.oschina.net/regex/">在线正则表达式测试 (oschina.net)</a> </p>
+<p>正则语法：使用元字符进行排列组合来匹配字符串</p>
+<p>元字符：具有固定含义的特殊符号</p>
+<p>常用元字符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.        匹配换行符以外的任意字符</span><br><span class="line">\w       匹配字母或数字或下划线</span><br><span class="line">\s       匹配任意的空白符</span><br><span class="line">\d       匹配数字</span><br><span class="line">\n       匹配一个换行符</span><br><span class="line">\t       匹配一个制表符</span><br><span class="line">^        匹配一个字符串的开始</span><br><span class="line">$        匹配字符串的结尾</span><br><span class="line">\W       匹配非字母或数字或下划线</span><br><span class="line">\D       匹配非数字</span><br><span class="line">\S       匹配非空白符</span><br><span class="line">a|b      匹配字符a或字符b</span><br><span class="line">()       匹配括号内的表达式，也表示一个组</span><br><span class="line">[...]    匹配字符组中的字符</span><br><span class="line">[^...]   匹配除了字符组中的所有字符</span><br></pre></td></tr></table></figure>
+
+<p>量词：控制前面的元字符出现的次数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">*     重复零次或更多次</span><br><span class="line">+     重复一次或更多次</span><br><span class="line">？    重复零次或一次</span><br><span class="line">&#123;n&#125;   重复n次</span><br><span class="line">&#123;n,&#125;  重复n次或更多次</span><br><span class="line">&#123;n,m&#125; 重复n次到m次</span><br></pre></td></tr></table></figure>
+
+<p>贪婪匹配和惰性匹配</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.*    贪婪匹配（匹配最长的一条）</span><br><span class="line">.*?   惰性匹配（匹配最短的一条）</span><br></pre></td></tr></table></figure>
+<p>#####re模块的使用</p>
+<h6 id="findall"><a href="#findall" class="headerlink" title="findall"></a>findall</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="comment"># findall:匹配字符串中所有符合正则的内容</span></span><br><span class="line">lst = re.findall(<span class="string">r&quot;\d+&quot;</span>, <span class="string">&quot;我的电话号码是10086，我女朋友的电话号码是:10010&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/10.png"></p>
+<h6 id="finditer"><a href="#finditer" class="headerlink" title="finditer"></a>finditer</h6><p>和findall差不多，只不过返回的是迭代器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="comment"># findall:匹配字符串中所有符合正则的内容</span></span><br><span class="line">lst = re.findall(<span class="string">r&quot;\d+&quot;</span>, <span class="string">&quot;我的电话号码是10086，我女朋友的电话号码是:10010&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br><span class="line"></span><br><span class="line"><span class="comment"># finditer:匹配字符串中所有的内容[返回的是迭代器]</span></span><br><span class="line">it = re.finditer(<span class="string">r&quot;\d+&quot;</span>, <span class="string">&quot;我的电话号码是10086，我女朋友的电话号码是:10010&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(it)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/11.png"></p>
+<p>将代码替换</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">it = re.finditer(<span class="string">r&quot;\d+&quot;</span>, <span class="string">&quot;我的电话号码是10086，我女朋友的电话号码是:10010&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> it:</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/12.png"></p>
+<p>&lt;re.Match&gt;是调用了re模块的匹配方法，span表示了所匹配字符的起始和结束位置，match是匹配到的字符。</p>
+<p>想要调用迭代器中的内容，就要使用group，再对代码进行更改</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">it = re.finditer(<span class="string">r&quot;\d+&quot;</span>, <span class="string">&quot;我的电话号码是10086，我女朋友的电话号码是:10010&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> it:</span><br><span class="line">    <span class="built_in">print</span>(i.group())</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/13.png"></p>
+<p>结果为迭代器中的内容，运行无误。</p>
+<h6 id="search"><a href="#search" class="headerlink" title="search"></a>search</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># search:找到一个结果就返回，返回的是一个match对象，拿数据需要.group()</span></span><br><span class="line">s = re.search(<span class="string">r&quot;\d+&quot;</span>, <span class="string">&quot;我的电话号码是10086，我女朋友的电话号码是:10010&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(s.group())</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/14.png"></p>
+<p>search与find的不同之处在于search只要知道有匹配的字符存在就返回，只寻找一个字符串</p>
+<h6 id="match"><a href="#match" class="headerlink" title="match"></a>match</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># match：默认从头开始匹配，如果字符串的第一个字符不是可匹配字符，则无返回值</span></span><br><span class="line">s = re.match(<span class="string">r&quot;\d+&quot;</span>, <span class="string">&quot;我的电话号码是10086，我女朋友的电话号码是:10010&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(s.group())</span><br></pre></td></tr></table></figure>
+<h6 id="complie"><a href="#complie" class="headerlink" title="complie"></a>complie</h6><p>预加载正则表达式</p>
+<p>当正则表达式过长时，我们可以使用预加载正则表达式，将要寻找的正则表达式格式储存住，调用时可以用不同的字符串，相当于用一种匹配格式匹配多次字符串，不用我们每次都去编写匹配格式，而且将匹配格式和待匹配语句分开写代码看起来更加整洁。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">obj = re.<span class="built_in">compile</span>(<span class="string">r&quot;\d+&quot;</span>)</span><br><span class="line">ret = obj.finditer(<span class="string">&quot;我的电话号码是10086，我女朋友的电话号码是:10010&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(ret)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> ret:</span><br><span class="line">    <span class="built_in">print</span>(i.group())</span><br><span class="line"></span><br><span class="line">ret = obj.findall(<span class="string">&quot;我的电话号码是10086，我女朋友的电话号码是:10010&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(ret)</span><br></pre></td></tr></table></figure>
+
+<p>  <img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/15.png"></p>
+<p>预加载正则表达式的好处是我们可以在多个地方多次使用。</p>
+<h6 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h6><p>在这里我们要区分几个概念</p>
+<ul>
+<li><p>可迭代对象</p>
+<p>列表、元组、字符串、字典等都是可迭代对象，可以使用for循环遍历出所有元素的都可以称为可迭代对象（Iterable）。 </p>
+</li>
+<li><p>迭代器</p>
+<p>迭代器是一个可以记住遍历的位置的对象。 迭代器对象从集合的第一个元素开始访问，直到所有的元素被访问完结束。迭代器只能往前不会后退。 </p>
+</li>
+<li><p>迭代器和可迭代对象的联系</p>
+<ol>
+<li><p>可迭代对象是包含迭代器的(迭代器一定是可迭代对象，反之却不一定)</p>
+</li>
+<li><p>如果一个对象定义了__iter()__方法，那它就是可迭代对象。</p>
+</li>
+<li><p>如果一个对象定义了__iter()__方法和__next()<strong>方法，那它就是迭代器。(因为迭代器是可迭代对象，所以一定有__iter()</strong>)</p>
+</li>
+</ol>
+</li>
+</ul>
+<h6 id="（？P-lt-分组名字-gt-正则）"><a href="#（？P-lt-分组名字-gt-正则）" class="headerlink" title="（？P&lt;分组名字&gt;正则）"></a>（？P&lt;分组名字&gt;正则）</h6><p>可以单独从正则匹配内容中单独匹配内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">s = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&lt;div class=&#x27;赘婿&#x27;&gt;&lt;span id=&#x27;女主&#x27;&gt;宋轶&lt;/span&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;div class=&#x27;赘婿&#x27;&gt;&lt;span id=&#x27;男主&#x27;&gt;郭麒麟&lt;/span&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># re.S让.可以匹配换行符</span></span><br><span class="line">obj = re.<span class="built_in">compile</span>(<span class="string">r&quot;&lt;div class=&#x27;.*?&#x27;&gt;&lt;span id=&#x27;.*?&#x27;&gt;.*?&lt;/span&gt;&lt;/div&gt;&quot;</span>, re.S)</span><br><span class="line">ret = obj.finditer(s)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> ret:</span><br><span class="line">    <span class="built_in">print</span>(i.group())</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/16.png"></p>
+<p>此时我们可以在结果中看到惰性匹配为我们把语句全部匹配了出来，但是如果我们只需要’赘婿‘’女主‘这样的信息的话，还需要再添加一个标签，将所需信息保存在标签中并将标签打印输出。</p>
+<p>我们将代码更改如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">s = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&lt;div class=&#x27;赘婿&#x27;&gt;&lt;span id=&#x27;女主&#x27;&gt;宋轶&lt;/span&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;div class=&#x27;赘婿&#x27;&gt;&lt;span id=&#x27;男主&#x27;&gt;郭麒麟&lt;/span&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="comment"># re.S让.可以匹配换行符</span></span><br><span class="line">obj = re.<span class="built_in">compile</span>(<span class="string">r&quot;&lt;div class=&#x27;(?P&lt;class&gt;.*?)&#x27;&gt;&lt;span id=(?P&lt;id&gt;&#x27;.*?&#x27;)&gt;(?P&lt;name&gt;.*?)&lt;/span&gt;&lt;/div&gt;&quot;</span>, re.S)</span><br><span class="line">ret = obj.finditer(s)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> ret:</span><br><span class="line">    <span class="built_in">print</span>(i.group(<span class="string">&quot;class&quot;</span>))</span><br><span class="line">    <span class="built_in">print</span>(i.group(<span class="string">&quot;id&quot;</span>))</span><br><span class="line">    <span class="built_in">print</span>(i.group(<span class="string">&quot;name&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/17.png"></p>
+<p>完美爬取。如果不想要进行换行输出，可以在print后加上end&#x3D;””，但是建议加上循环换行</p>
+<h6 id="豆瓣电影网练手"><a href="#豆瓣电影网练手" class="headerlink" title="豆瓣电影网练手"></a>豆瓣电影网练手</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#拿到页面源代码  requests</span></span><br><span class="line"><span class="comment">#通过re来提取想要的有效信息  re模块</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://movie.douban.com/top250&#x27;</span></span><br><span class="line">header = &#123;</span><br><span class="line"><span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">resp = requests.get(url, headers=header)</span><br><span class="line">page_content = resp.text <span class="comment">#爬取到的页面源代码</span></span><br><span class="line"></span><br><span class="line">obj = re.<span class="built_in">compile</span>(<span class="string">r&#x27;&lt;li&gt;.*?&lt;div class=&quot;item&quot;&gt;.*?&lt;span class=&quot;title&quot;&gt;(?P&lt;name&gt;.*?)&lt;/span&gt;&#x27;</span>, re.S)</span><br><span class="line">result = obj.finditer(page_content)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> result:</span><br><span class="line">    <span class="built_in">print</span>(i.group(<span class="string">&quot;name&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/18.png"></p>
+<p>成功爬取电影名称</p>
+<p>这段代码的思路很简单，首先通过responses获取信息，再建立预加载正则表达式，注意在建立的时候我们要观察所有代码的共同点，不然容易匹配错误从而获取不到我们想要的信息，最后再finditer匹配打印输出。</p>
+<p>进一步爬取电影年份信息</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#拿到页面源代码  requests</span></span><br><span class="line"><span class="comment">#通过re来提取想要的有效信息  re模块</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://movie.douban.com/top250&#x27;</span></span><br><span class="line">header = &#123;</span><br><span class="line"><span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">resp = requests.get(url, headers=header)</span><br><span class="line">page_content = resp.text <span class="comment">#爬取到的页面源代码</span></span><br><span class="line"></span><br><span class="line">obj = re.<span class="built_in">compile</span>(<span class="string">r&#x27;&lt;li&gt;.*?&lt;div class=&quot;item&quot;&gt;.*?&lt;span class=&quot;title&quot;&gt;(?P&lt;name&gt;.*?)&lt;/span&gt;.*?&lt;p class=&quot;&quot;&gt;.*?&lt;br&gt;(?P&lt;year&gt;.*?)&amp;nbsp&#x27;</span>, re.S)</span><br><span class="line">result = obj.finditer(page_content)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> result:</span><br><span class="line">    <span class="built_in">print</span>(i.group(<span class="string">&quot;name&quot;</span>))</span><br><span class="line">    <span class="built_in">print</span>(i.group(<span class="string">&quot;year&quot;</span>).strip())<span class="comment">#strip()函数可以消除字符前面或后面的空格，不能消除字符中间的空格</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/19.png"></p>
+<p>成功获取年份</p>
+<p>同理我们也可以根据这种方式获取电影评分和观看人数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#拿到页面源代码  requests</span></span><br><span class="line"><span class="comment">#通过re来提取想要的有效信息  re模块</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://movie.douban.com/top250&#x27;</span></span><br><span class="line">header = &#123;</span><br><span class="line"><span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">resp = requests.get(url, headers=header)</span><br><span class="line">page_content = resp.text <span class="comment">#爬取到的页面源代码</span></span><br><span class="line"></span><br><span class="line">obj = re.<span class="built_in">compile</span>(<span class="string">r&#x27;&lt;li&gt;.*?&lt;div class=&quot;item&quot;&gt;.*?&lt;span class=&quot;title&quot;&gt;(?P&lt;name&gt;.*?)&lt;/span&gt;.*?&lt;p class=&quot;&quot;&gt;.*?&lt;br&gt;(?P&lt;year&gt;.*?)&#x27;</span></span><br><span class="line">                 <span class="string">r&#x27;&amp;nbsp.*?&lt;span class=&quot;rating_num&quot; property=&quot;v:average&quot;&gt;(?P&lt;point&gt;.*?)&lt;/span&gt;.*?&lt;span&gt;(?P&lt;people&gt;.*?)人评价&#x27;</span>, re.S)</span><br><span class="line">result = obj.finditer(page_content)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> result:</span><br><span class="line">    <span class="built_in">print</span>(i.group(<span class="string">&quot;name&quot;</span>))</span><br><span class="line">    <span class="built_in">print</span>(i.group(<span class="string">&quot;year&quot;</span>).strip())</span><br><span class="line">    <span class="built_in">print</span>(i.group(<span class="string">&quot;point&quot;</span>))</span><br><span class="line">    <span class="built_in">print</span>(i.group(<span class="string">&quot;people&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/20.png"></p>
+<h6 id="将数据保存在csv文件中"><a href="#将数据保存在csv文件中" class="headerlink" title="将数据保存在csv文件中"></a>将数据保存在csv文件中</h6><p>csv文件中的东西都是通过，分隔开的，对我们以后做数据分析很有帮助</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;https://movie.douban.com/top250&#x27;</span></span><br><span class="line">header = &#123;</span><br><span class="line"><span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">resp = requests.get(url, headers=header)</span><br><span class="line">page_content = resp.text <span class="comment">#爬取到的页面源代码</span></span><br><span class="line"></span><br><span class="line">obj = re.<span class="built_in">compile</span>(<span class="string">r&#x27;&lt;li&gt;.*?&lt;div class=&quot;item&quot;&gt;.*?&lt;span class=&quot;title&quot;&gt;(?P&lt;name&gt;.*?)&lt;/span&gt;.*?&lt;p class=&quot;&quot;&gt;.*?&lt;br&gt;(?P&lt;year&gt;.*?)&#x27;</span></span><br><span class="line">                 <span class="string">r&#x27;&amp;nbsp.*?&lt;span class=&quot;rating_num&quot; property=&quot;v:average&quot;&gt;(?P&lt;point&gt;.*?)&lt;/span&gt;.*?&lt;span&gt;(?P&lt;people&gt;.*?)人评价&#x27;</span>, re.S)</span><br><span class="line">result = obj.finditer(page_content)</span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&quot;data.csv&quot;</span>, mode=<span class="string">&quot;w&quot;</span>,encoding=<span class="string">&#x27;UTF-8&#x27;</span>)</span><br><span class="line">cswriter = csv.writer(f)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> result:</span><br><span class="line">    dic = i.groupdict()</span><br><span class="line">    dic[<span class="string">&#x27;year&#x27;</span>] = dic[<span class="string">&#x27;year&#x27;</span>].strip()</span><br><span class="line">    cswriter.writerow(dic.values())</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/21.png"></p>
+<p>pycharm会自动生成一个csv文件，爬取的数据会自动保存到该文件中，看起来是不是特别条理清晰</p>
+<h5 id="bs4解析"><a href="#bs4解析" class="headerlink" title="bs4解析"></a>bs4解析</h5><p>bs全称<strong>Beatiful Soup</strong> ，也需要另外安装，如果使用的是pycharm编译器，点击Terminal输入pip install bs4，pycharm便自动为我们安装好了bs模块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#1. 拿到页面源代码</span><br><span class="line">#2. 使用bs4进行解析，拿到数据</span><br></pre></td></tr></table></figure>
+
+<p>解析数据：</p>
+<p>1.把页面源代码交给BeautifulSoup进行处理，生成bs对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">page = BeautifulSoup（resp.text, <span class="string">&quot;html.parser&quot;</span>）<span class="comment">#指定html解析器</span></span><br></pre></td></tr></table></figure>
+
+<p>2.从bs对象中查找数据</p>
+<ul>
+<li>find（标签，属性&#x3D;值）：只找第一个</li>
+<li>find_all（标签，属性&#x3D;值）：返回页面所有符合要求的</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">page.find(<span class="string">&quot;table&quot;</span>, class_ = <span class="string">&quot;hq_table&quot;</span>)</span><br><span class="line"><span class="comment">#class是python的关键字，所有这里加上_</span></span><br></pre></td></tr></table></figure>
+
+<p>但是每次这么写都要记得class后面加_，我们可以换一种方式来写</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">page.find(<span class="string">&quot;table&quot;</span>, attrs=&#123;<span class="string">&quot;class&quot;</span>:<span class="string">&quot;hq_table&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h6 id="图片链接爬取"><a href="#图片链接爬取" class="headerlink" title="图片链接爬取"></a>图片链接爬取</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.拿到主页面的源代码，提取到子页面的链接地址</span></span><br><span class="line"><span class="comment">#2.通过href拿到子页面的内容，从子页面中拿到图片的下载地址</span></span><br><span class="line"><span class="comment">#3.下载图片</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">url = <span class="string">&quot;http://bizhi360.com/weimei/&quot;</span></span><br><span class="line">resp = requests.get(url)</span><br><span class="line">resp.encoding = <span class="string">&quot;UTF-8&quot;</span></span><br><span class="line"></span><br><span class="line">main_page = BeautifulSoup(resp.text, <span class="string">&quot;html.parser&quot;</span>)</span><br><span class="line">alist = main_page.find(<span class="string">&quot;div&quot;</span>, attrs=&#123;<span class="string">&quot;class&quot;</span>: <span class="string">&quot;pic-list&quot;</span>&#125;).find_all(<span class="string">&quot;a&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> a <span class="keyword">in</span> alist:</span><br><span class="line">    s = <span class="string">&quot;http://bizhi360.com/&quot;</span>+a.get(<span class="string">&quot;href&quot;</span>)</span><br><span class="line">    <span class="comment">#拿到子页面的源代码</span></span><br><span class="line">    headers =&#123;</span><br><span class="line">        <span class="string">&quot;user-agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.75 Safari/537.36 Edg/100.0.1185.36&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    child_page_resp = requests.get(s, headers=headers)</span><br><span class="line">    child_page_resp.encoding = <span class="string">&quot;UTF-8&quot;</span></span><br><span class="line">    child_page_text = child_page_resp.text</span><br><span class="line">    <span class="comment">#从子页面中拿到图片的下载途径</span></span><br><span class="line">    child_page = BeautifulSoup(child_page_text, <span class="string">&quot;html.parser&quot;</span>)</span><br><span class="line">    p = child_page.find(<span class="string">&quot;figure&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(p)</span><br><span class="line">resp.close()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/22.png"></p>
+<p>通过一个网站进入子网链接，并对图片地址进行爬取，但是可能是因为进入次数太多，遭到了反爬，只能进行到如上图所示这一步，下次我换个网站试试吧</p>
+<h5 id="xpath解析"><a href="#xpath解析" class="headerlink" title="xpath解析"></a>xpath解析</h5><p>xpath需要下载lxml模块</p>
+<p>XPath 使用路径表达式来选取 XML 文档中的节点或节点集，节点是通过沿着路径 (path) 或者步 (steps) 来选取的。</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nodename</td>
+<td>选取此节点的所有子节点。</td>
+</tr>
+<tr>
+<td>&#x2F;</td>
+<td>从根节点选取。</td>
+</tr>
+<tr>
+<td>&#x2F;&#x2F;</td>
+<td>从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置。</td>
+</tr>
+<tr>
+<td>.</td>
+<td>选取当前节点。</td>
+</tr>
+<tr>
+<td>..</td>
+<td>选取当前节点的父节点。</td>
+</tr>
+<tr>
+<td>@</td>
+<td>选取属性。</td>
+</tr>
+<tr>
+<td>.&#x2F;</td>
+<td>从当前节点选取</td>
+</tr>
+</tbody></table>
+<p>举例说明：</p>
+<table>
+<thead>
+<tr>
+<th>路径表达式</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bookstore</td>
+<td>选取 bookstore 元素的所有子节点。</td>
+</tr>
+<tr>
+<td>&#x2F;bookstore</td>
+<td>选取根元素 bookstore。注释：假如路径起始于正斜杠( &#x2F; )，则此路径始终代表到某元素的绝对路径！</td>
+</tr>
+<tr>
+<td>bookstore&#x2F;book</td>
+<td>选取属于 bookstore 的子元素的所有 book 元素。</td>
+</tr>
+<tr>
+<td>&#x2F;&#x2F;book</td>
+<td>选取所有 book 子元素，而不管它们在文档中的位置。</td>
+</tr>
+<tr>
+<td>bookstore&#x2F;&#x2F;book</td>
+<td>选择属于 bookstore 元素的后代的所有 book 元素，而不管它们位于 bookstore 之下的什么位置。</td>
+</tr>
+<tr>
+<td>&#x2F;&#x2F;@lang</td>
+<td>选取名为 lang 的所有属性。</td>
+</tr>
+</tbody></table>
+<p>路径表达式：</p>
+<table>
+<thead>
+<tr>
+<th>路径表达式</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;bookstore&#x2F;book[1]</td>
+<td>选取属于 bookstore 子元素的第一个 book 元素。</td>
+</tr>
+<tr>
+<td>&#x2F;bookstore&#x2F;book[last()]</td>
+<td>选取属于 bookstore 子元素的最后一个 book 元素。</td>
+</tr>
+<tr>
+<td>&#x2F;bookstore&#x2F;book[last()-1]</td>
+<td>选取属于 bookstore 子元素的倒数第二个 book 元素。</td>
+</tr>
+<tr>
+<td>&#x2F;bookstore&#x2F;book[position()&lt;3]</td>
+<td>选取最前面的两个属于 bookstore 元素的子元素的 book 元素。</td>
+</tr>
+<tr>
+<td>&#x2F;&#x2F;title[@lang]</td>
+<td>选取所有拥有名为 lang 的属性的 title 元素。</td>
+</tr>
+<tr>
+<td>&#x2F;&#x2F;title[@lang&#x3D;’eng’]</td>
+<td>选取所有 title 元素，且这些元素拥有值为 eng 的 lang 属性。</td>
+</tr>
+<tr>
+<td>&#x2F;bookstore&#x2F;book[price&gt;35.00]</td>
+<td>选取 bookstore 元素的所有 book 元素，且其中的 price 元素的值须大于 35.00。</td>
+</tr>
+<tr>
+<td>&#x2F;bookstore&#x2F;book[price&gt;35.00]&#x2F;title</td>
+<td>选取 bookstore 元素中的 book 元素的所有 title 元素，且其中的 price 元素的值须大于 35.00。</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td>匹配任何元素节点。</td>
+</tr>
+<tr>
+<td>@*</td>
+<td>匹配任何属性节点。</td>
+</tr>
+<tr>
+<td>node()</td>
+<td>匹配任何类型的节点。</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>路径表达式</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;bookstore&#x2F;*</td>
+<td>选取 bookstore 元素的所有子元素。</td>
+</tr>
+<tr>
+<td>&#x2F;&#x2F;*</td>
+<td>选取文档中的所有元素。</td>
+</tr>
+<tr>
+<td>&#x2F;&#x2F;title[@*]</td>
+<td>选取所有带有属性的 title 元素。</td>
+</tr>
+</tbody></table>
+<h6 id="猪八戒网实战"><a href="#猪八戒网实战" class="headerlink" title="猪八戒网实战"></a>猪八戒网实战</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#拿到页面源代码</span></span><br><span class="line"><span class="comment">#提取和解析数据</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line">url = <span class="string">&quot;https://taiyuan.zbj.com/search/f/?kw=saas&quot;</span></span><br><span class="line">resp = requests.get(url)</span><br><span class="line"></span><br><span class="line"><span class="comment">#解析</span></span><br><span class="line">html = etree.HTML(resp.text)</span><br><span class="line">divs = html.xpath(<span class="string">&quot;/html/body/div[6]/div/div/div[2]/div[5]/div[1]/div&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> div <span class="keyword">in</span> divs:<span class="comment">#每一个服务商的div</span></span><br><span class="line">    price = div.xpath(<span class="string">&quot;./div/div/a[2]/div[2]/div[1]/span[1]/text()&quot;</span>)[<span class="number">0</span>].strip(<span class="string">&#x27;¥&#x27;</span>)</span><br><span class="line">    title = <span class="string">&#x27;saas&#x27;</span>.join(div.xpath(<span class="string">&quot;./div/div/a[2]/div[2]/div[2]/p/text()&quot;</span>))</span><br><span class="line">    com_name = div.xpath(<span class="string">&quot;./div/div/a[1]/div[1]/p/text()&quot;</span>)[<span class="number">1</span>]</span><br><span class="line">    <span class="built_in">print</span>(price)</span><br><span class="line">    <span class="built_in">print</span>(title)</span><br><span class="line">    <span class="built_in">print</span>(com_name)</span><br><span class="line">    </span><br><span class="line">resp.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/04/11/python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/23.png"></p>
+<p>运行结果还算完美吧</p>
+<p>一路学下来，感觉爬虫其实只是一些包的运用，多动手做些案例都能搞明白，不过爬虫需谨慎，不要爬不该爬的东西，且不说能不能爬到，爬不到心情不好，爬到了进局子，何必嘞</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/09/java%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89/" rel="prev" title="java基础（三）">
+      <i class="fa fa-chevron-left"></i> java基础（三）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/04/12/hello-world/" rel="next" title="Hello World">
+      Hello World <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFurl"><span class="nav-number">1.</span> <span class="nav-text">什么是url</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%88%AC%E8%99%AB"><span class="nav-number">2.</span> <span class="nav-text">第一个爬虫</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B%E5%89%96%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">Web请求过程剖析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="nav-number">4.</span> <span class="nav-text">HTTP协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Requests"><span class="nav-number">5.</span> <span class="nav-text">Requests</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%E4%B8%80%EF%BC%88get%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="nav-number">5.1.</span> <span class="nav-text">案例一（get方式）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%E4%BA%8C%EF%BC%88post%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="nav-number">5.2.</span> <span class="nav-text">案例二（post方式）</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#get%E4%B8%8Epost%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">5.2.1.</span> <span class="nav-text">get与post的区别</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%E4%B8%89"><span class="nav-number">5.3.</span> <span class="nav-text">案例三</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%A7%A3%E6%9E%90%E6%A6%82%E8%BF%B0"><span class="nav-number">6.</span> <span class="nav-text">数据解析概述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#re%E8%A7%A3%E6%9E%90"><span class="nav-number">6.1.</span> <span class="nav-text">re解析</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#findall"><span class="nav-number">6.1.1.</span> <span class="nav-text">findall</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#finditer"><span class="nav-number">6.1.2.</span> <span class="nav-text">finditer</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#search"><span class="nav-number">6.1.3.</span> <span class="nav-text">search</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#match"><span class="nav-number">6.1.4.</span> <span class="nav-text">match</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#complie"><span class="nav-number">6.1.5.</span> <span class="nav-text">complie</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3"><span class="nav-number">6.1.6.</span> <span class="nav-text">迭代</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%EF%BC%88%EF%BC%9FP-lt-%E5%88%86%E7%BB%84%E5%90%8D%E5%AD%97-gt-%E6%AD%A3%E5%88%99%EF%BC%89"><span class="nav-number">6.1.7.</span> <span class="nav-text">（？P&lt;分组名字&gt;正则）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E7%BD%91%E7%BB%83%E6%89%8B"><span class="nav-number">6.1.8.</span> <span class="nav-text">豆瓣电影网练手</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B0%86%E6%95%B0%E6%8D%AE%E4%BF%9D%E5%AD%98%E5%9C%A8csv%E6%96%87%E4%BB%B6%E4%B8%AD"><span class="nav-number">6.1.9.</span> <span class="nav-text">将数据保存在csv文件中</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bs4%E8%A7%A3%E6%9E%90"><span class="nav-number">6.2.</span> <span class="nav-text">bs4解析</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5%E7%88%AC%E5%8F%96"><span class="nav-number">6.2.1.</span> <span class="nav-text">图片链接爬取</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#xpath%E8%A7%A3%E6%9E%90"><span class="nav-number">6.3.</span> <span class="nav-text">xpath解析</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%8C%AA%E5%85%AB%E6%88%92%E7%BD%91%E5%AE%9E%E6%88%98"><span class="nav-number">6.3.1.</span> <span class="nav-text">猪八戒网实战</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="京都小白"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">京都小白</p>
+  <div class="site-description" itemprop="description">每一个不曾起舞的日子，都是对生命的辜负</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+      
+      <div>
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 
+      src="//music.163.com/outchain/player?type=2&id=421137559&auto=1&height=66"></iframe>
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">京都小白</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='1' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
